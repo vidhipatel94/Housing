@@ -120,7 +120,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tQb-Jd-dQW"/>
                     </view>
-                    <navigationItem key="navigationItem" title="List" id="9EJ-ka-UF1"/>
+                    <navigationItem key="navigationItem" title="List" id="9EJ-ka-UF1">
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="1A8-bq-9M8">
+                            <connections>
+                                <segue destination="7ZW-ML-IkN" kind="show" identifier="FilterSegue" id="bJd-dQ-BeA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vJa-bf-uzj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -191,6 +197,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="bJd-dQ-BeA"/>
         <segue reference="aYA-2t-ujY"/>
     </inferredMetricsTieBreakers>
 </document>
