@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F86BFCEB2573975700527AFD /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86BFCEA2573975700527AFD /* DashboardViewController.swift */; };
+		F86BFCED2573979700527AFD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86BFCEC2573979700527AFD /* RegisterViewController.swift */; };
 		F8C6D8A02571837700F725B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C6D89F2571837700F725B2 /* AppDelegate.swift */; };
 		F8C6D8A22571837700F725B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C6D8A12571837700F725B2 /* SceneDelegate.swift */; };
-		F8C6D8A42571837700F725B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C6D8A32571837700F725B2 /* ViewController.swift */; };
 		F8C6D8A72571837700F725B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8C6D8A52571837700F725B2 /* Main.storyboard */; };
 		F8C6D8AA2571837700F725B2 /* Housing.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F8C6D8A82571837700F725B2 /* Housing.xcdatamodeld */; };
 		F8C6D8AC2571837900F725B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8C6D8AB2571837900F725B2 /* Assets.xcassets */; };
@@ -17,10 +18,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F86BFCEA2573975700527AFD /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		F86BFCEC2573979700527AFD /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		F8C6D89C2571837700F725B2 /* Housing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Housing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8C6D89F2571837700F725B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8C6D8A12571837700F725B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F8C6D8A32571837700F725B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F8C6D8A62571837700F725B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F8C6D8A92571837700F725B2 /* Housing.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Housing.xcdatamodel; sourceTree = "<group>"; };
 		F8C6D8AB2571837900F725B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,12 +62,13 @@
 			children = (
 				F8C6D89F2571837700F725B2 /* AppDelegate.swift */,
 				F8C6D8A12571837700F725B2 /* SceneDelegate.swift */,
-				F8C6D8A32571837700F725B2 /* ViewController.swift */,
 				F8C6D8A52571837700F725B2 /* Main.storyboard */,
 				F8C6D8AB2571837900F725B2 /* Assets.xcassets */,
 				F8C6D8AD2571837900F725B2 /* LaunchScreen.storyboard */,
 				F8C6D8B02571837900F725B2 /* Info.plist */,
 				F8C6D8A82571837700F725B2 /* Housing.xcdatamodeld */,
+				F86BFCEA2573975700527AFD /* DashboardViewController.swift */,
+				F86BFCEC2573979700527AFD /* RegisterViewController.swift */,
 			);
 			path = Housing;
 			sourceTree = "<group>";
@@ -141,10 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8C6D8A42571837700F725B2 /* ViewController.swift in Sources */,
 				F8C6D8AA2571837700F725B2 /* Housing.xcdatamodeld in Sources */,
+				F86BFCED2573979700527AFD /* RegisterViewController.swift in Sources */,
 				F8C6D8A02571837700F725B2 /* AppDelegate.swift in Sources */,
 				F8C6D8A22571837700F725B2 /* SceneDelegate.swift in Sources */,
+				F86BFCEB2573975700527AFD /* DashboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
