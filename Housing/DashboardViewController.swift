@@ -10,20 +10,20 @@
 import UIKit
 
 class DashboardViewController: UIViewController {
-
+    
     var cityListings = [CityListing]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.navigationItem.hidesBackButton = true
         
         getCitiesWithListing()
         
     }
-
+    
     private func getCitiesWithListing() {
-        HouseStore().getHouses { (houses) -> Void in
+        HouseStore.instance.getHouses { (houses) -> Void in
             print("Total houses: \(houses.count)")
             if houses.count > 0 {
                 for house in houses {
@@ -39,7 +39,24 @@ class DashboardViewController: UIViewController {
             // reload collection view
         }
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "BuyHouseSegue"?:
+            let listVC = segue.destination as! ListViewController
+            listVC.filter = Filter()
+            listVC.filter.onBuy = true
+            listVC.filter.onRent = false
+        case "RentHouseSegue"?:
+            let listVC = segue.destination as! ListViewController
+            listVC.filter = Filter()
+            listVC.filter.onBuy = false
+            listVC.filter.onRent = true
+        default:
+            print("Unexpected segue identifier")
+        }
+    }
+    
 }
 
 class CityListing {

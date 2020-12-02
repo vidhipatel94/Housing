@@ -20,7 +20,13 @@ enum GetHousesError : Error {
 
 class HouseStore {
     
+    static let instance = HouseStore() //Singleton
+    
     private var houses = [House]()
+    
+    private init() {
+        
+    }
     
     private let urlSession : URLSession = {
         return URLSession(configuration: URLSessionConfiguration.default)
@@ -105,10 +111,24 @@ class HouseStore {
                 return nil;
         }
         return House(id: id, title: title, type: type, size: size, address: address, city: city,
-        latitude: latitude, longitude: longitude, price: price, onSale: onSale, onRent: onRent,
-        contactNo: contactNo, amenities: amenities, photos: photos)
+                     latitude: latitude, longitude: longitude, price: price, onSale: onSale, onRent: onRent,
+                     contactNo: contactNo, amenities: amenities, photos: photos)
     }
     
-    
-    
+    func getFilteredHouses(filter: Filter, onComplete: @escaping([House])->Void){
+        getHouses { (houses) -> Void in
+            var finalHouses = [House]()
+            if houses.count > 0 {
+                finalHouses = houses.filter {
+                    ( ((filter.onRent && $0.onRent) || (filter.onBuy && $0.onSale))
+                        && (filter.city == nil || $0.city == filter.city)
+                        && (filter.type == nil || $0.type == filter.type)
+                        && ($0.price == nil || (filter.minPrice == nil || $0.price >= filter.minPrice)
+                            && (filter.maxPrice == nil || $0.price <= filter.maxPrice))
+                    )
+                }
+            }
+            onComplete(finalHouses)
+        }
+    }
 }

@@ -11,10 +11,23 @@ import UIKit
 
 class ListViewController: UIViewController {
 
+    var filter = Filter()
+    var houses = [House]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+       getFilteredHouses()
     }
-
+    
+    func getFilteredHouses() {
+        HouseStore.instance.getFilteredHouses(filter: filter) { (houses)-> Void in
+            self.houses = houses
+            print("Total filtered houses: \(houses.count)")
+            // reload table view
+        }
+    }
+    
 }

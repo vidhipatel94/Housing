@@ -8,7 +8,7 @@
 
 import Foundation
 
-class House {
+class House : Codable{
     
     var id: Int
     var title: String!
@@ -42,6 +42,16 @@ class House {
         self.contactNo = contactNo
         self.amenities = amenities
         self.photos = photos
+    }
+    
+    func toString()->String {
+        do {
+            let jsonEncoder = JSONEncoder()
+            let jsonData = try jsonEncoder.encode(self)
+            return String(data: jsonData, encoding: String.Encoding.utf8)!
+        } catch {
+            return ""
+        }
     }
     
 }
