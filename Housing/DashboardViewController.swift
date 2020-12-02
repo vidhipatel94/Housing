@@ -15,6 +15,10 @@ class DashboardViewController: UIViewController {
         super.viewDidLoad()
 
         self.navigationItem.hidesBackButton = true
+        
+        HouseStore().getHouses { (houses) -> Void in
+            print("Total houses: \(houses.count)")
+        }
     }
 
 
