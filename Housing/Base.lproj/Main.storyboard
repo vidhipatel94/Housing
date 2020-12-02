@@ -48,7 +48,7 @@
                                 <rect key="frame" x="136" y="149" width="48" height="30"/>
                                 <state key="normal" title="Search"/>
                                 <connections>
-                                    <segue destination="7ZW-ML-IkN" kind="show" identifier="SearchHouseSegue" id="Bwb-XM-LrC"/>
+                                    <segue destination="Qoz-Sb-HHf" kind="show" id="ikQ-MK-Tts"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIn-jP-urS">
@@ -105,7 +105,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="5nf-oz-Q5X" kind="show" id="CS5-qS-7gp"/>
+                                            <segue destination="5nf-oz-Q5X" kind="show" identifier="DetailSegue" id="CS5-qS-7gp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -121,12 +121,22 @@
                         <viewLayoutGuide key="safeArea" id="tQb-Jd-dQW"/>
                     </view>
                     <navigationItem key="navigationItem" title="List" id="9EJ-ka-UF1">
-                        <barButtonItem key="rightBarButtonItem" title="Filter" id="1A8-bq-9M8">
-                            <connections>
-                                <segue destination="7ZW-ML-IkN" kind="show" identifier="FilterSegue" id="bJd-dQ-BeA"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Filter" id="1A8-bq-9M8">
+                                <connections>
+                                    <segue destination="7ZW-ML-IkN" kind="show" identifier="FilterSegue" id="bJd-dQ-BeA"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Temp" id="WSR-Y5-kae">
+                                <connections>
+                                    <segue destination="5nf-oz-Q5X" kind="show" id="nnI-nl-jhB"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="xGc-sr-s4m" id="ttU-f6-Fjl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vJa-bf-uzj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -139,20 +149,7 @@
                     <view key="view" contentMode="scaleToFill" id="9cC-ZV-aiG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9u-dp-Cy7">
-                                <rect key="frame" x="140" y="498" width="40" height="30"/>
-                                <state key="normal" title="Apply"/>
-                                <connections>
-                                    <segue destination="Qoz-Sb-HHf" kind="show" identifier="ApplyFilterSegue" id="1Bx-4L-Fjc"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="W9u-dp-Cy7" firstAttribute="centerX" secondItem="9cC-ZV-aiG" secondAttribute="centerX" id="azc-g8-avb"/>
-                            <constraint firstAttribute="bottom" secondItem="W9u-dp-Cy7" secondAttribute="bottom" constant="40" id="b4v-08-lAN"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fc2-Ws-SsM"/>
                     </view>
                     <navigationItem key="navigationItem" title="Filter" id="EtQ-Rh-gqR"/>
@@ -197,7 +194,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Bwb-XM-LrC"/>
+        <segue reference="CS5-qS-7gp"/>
         <segue reference="aYA-2t-ujY"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -11,10 +11,19 @@ import UIKit
 
 class FilterViewController: UIViewController {
 
+    var filter = Filter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        view.endEditing(true)
+        
+        // save data into filter
+    }
 }

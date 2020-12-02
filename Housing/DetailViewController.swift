@@ -11,6 +11,8 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    var house: House!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
