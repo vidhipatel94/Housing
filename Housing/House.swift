@@ -25,9 +25,9 @@ class House : Codable{
     var amenities: [String]!
     var photos: [String]!
     
-    init(id: Int, title: String, type: String, size: String, address: String, city: String,
-         latitude: Double, longitude: Double, price: Double, onSale: Bool, onRent: Bool,
-         contactNo: String, amenities: [String], photos: [String]){
+    init(id: Int, title: String!, type: String!, size: String!, address: String!, city: String!,
+         latitude: Double!, longitude: Double!, price: Double!, onSale: Bool!, onRent: Bool!,
+         contactNo: String!, amenities: [String]!, photos: [String]!){
         self.id = id
         self.title = title
         self.type = type
