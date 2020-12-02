@@ -1,0 +1,302 @@
+{
+  "master": {
+    "houses": [
+      {
+        "id": 1,
+        "title": "Signature Homes",
+        "type": "Villa",
+        "size": "2 BHK, 1200 sq-ft",
+        "address": "Signature Homes, Opp. Walmart, Toronto, N7D 4G8",
+        "city": "Toronto",
+        "latitude": 58.452378,
+        "longitude": -60.346589,
+        "price": 1500.5,
+        "onSale": false,
+        "onRent": true,
+        "contactNo": "123-123-1234",
+        "amenities": [
+          "Power Backup",
+          "Parking",
+          "Swimming Pool"
+        ],
+        "photos": [
+          "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?cs=srgb&dl=pexels-pixabay-258154.jpg&fm=jpg",
+          "https://images.pexels.com/photos/5028910/pexels-photo-5028910.jpeg?cs=srgb&dl=pexels-evgenia-basyrova-5028910.jpg&fm=jpg",
+          "https://images.pexels.com/photos/3011575/pexels-photo-3011575.jpeg?cs=srgb&dl=pexels-engin-akyurt-3011575.jpg&fm=jpg",
+          "https://images.pexels.com/photos/3797503/pexels-photo-3797503.jpeg?cs=srgb&dl=pexels-rex-whiticker-3797503.jpg&fm=jpg"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Flower Homes",
+        "type": "Basement",
+        "size": "2 BHK, 1000 sq-ft",
+        "address": "Flower Homes, Missisauga",
+        "city": "Missisauga",
+        "latitude": 43.59531,
+        "longitude": -79.640579,
+        "price": 1200,
+        "onSale": false,
+        "onRent": true,
+        "contactNo": "123-123-1234",
+        "amenities": [
+          "Power Backup",
+          "Parking"
+        ],
+        "photos": [
+          "https://images.pexels.com/photos/1125130/pexels-photo-1125130.jpeg?cs=srgb&dl=pexels-element-digital-1125130.jpg&fm=jpg",
+          "https://cdn.pixabay.com/photo/2015/07/27/14/05/household-862595_960_720.jpg",
+          "https://cdn.pixabay.com/photo/2014/07/02/13/31/family-room-382150_960_720.jpg",
+          "https://cdn.pixabay.com/photo/2018/07/26/20/14/bedroom-3564488_960_720.jpg"
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Flower Homes",
+        "type": "Bungalow",
+        "size": "3 BHK, 1400 sq-ft",
+        "address": "RevelRealty Homes, Markham road ,Scarbrough",
+        "city": "Scarbrough",
+        "latitude": 43.777702,
+        "longitude": -79.233238,
+        "price": 1800,
+        "onSale": false,
+        "onRent": true,
+        "contactNo": "123-123-1234",
+        "amenities": [
+          "Power Backup",
+          "Parking",
+          "Swimming Pool"
+        ],
+        "photos": [
+          "https://images.pexels.com/photos/3639542/pexels-photo-3639542.jpeg?cs=srgb&dl=pexels-lina-kivaka-3639542.jpg&fm=jpg",
+          "https://images.pexels.com/photos/2893177/pexels-photo-2893177.jpeg?cs=srgb&dl=pexels-trygve-finkelsen-2893177.jpg&fm=jpg",
+          "https://images.pexels.com/photos/2816323/pexels-photo-2816323.jpeg?cs=srgb&dl=pexels-lisa-fotios-2816323.jpg&fm=jpg"
+        ]
+      },
+      {
+        "id": 4,
+        "title": "WSP",
+        "type": "Bungalow",
+        "size": "6 BHK, 7000 sq-ft",
+        "address": " 2 International Blvd Suite 201, Etobicoke, ON M9W 1A2",
+        "city": "Toronto",
+        "latitude": 58.452378,
+        "longitude": -60.346589,
+        "price": 10000,
+        "onSale": false,
+        "onRent": true,
+        "contactNo": "123-123-1234",
+        "amenities": [
+          "Power Backup",
+          "Parking",
+          "Swimming Pool"
+        ],
+        "photos": [
+          "https://cdn.pixabay.com/photo/2015/08/04/18/50/mansion-875094_960_720.jpg",
+          "https://cdn.pixabay.com/photo/2018/01/08/22/58/architecture-3070493_960_720.jpg",
+          "https://cdn.pixabay.com/photo/2013/04/16/18/22/york-105119_960_720.jpg",
+          "https://cdn.pixabay.com/photo/2019/05/25/20/26/mansion-4229081_960_720.jpg"
+        ]
+      },
+      {
+        "id": 5,
+        "title": "The heritage Executive suites",
+        "type": "Bungalow",
+        "size": "3 BHK, 1550 sq-ft",
+        "address": "100 Queen st W, Brampton",
+        "city": "Brampton",
+        "latitude": 43.683334,
+        "longitude": -79.76667,
+        "price": 1700,
+        "onSale": false,
+        "onRent": true,
+        "contactNo": "123-123-1234",
+        "amenities": [
+          "Power Backup",
+          "Parking",
+          "Swimming Pool"
+        ],
+        "photos": [
+          "https://images.pexels.com/photos/4906452/pexels-photo-4906452.jpeg?cs=srgb&dl=pexels-maria-orlova-4906452.jpg&fm=jpg",
+          "https://images.pexels.com/photos/5875866/pexels-photo-5875866.jpeg?cs=srgb&dl=pexels-marta-wave-5875866.jpg&fm=jpg",
+          "https://images.pexels.com/photos/5472252/pexels-photo-5472252.jpeg?cs=srgb&dl=pexels-ryutaro-tsukata-5472252.jpg&fm=jpg"
+        ]
+      },
+      {
+        "id": 6,
+        "title": "GHD",
+        "type": "Condos",
+        "size": "2 BHK, 1250 sq-ft",
+        "address": "455 Phillip St, Waterloo, ON N2L 3X2",
+        "city": "Waterloo",
+        "latitude": 43.390712,
+        "longitude": -80.405973,
+        "price": 1700,
+        "onSale": false,
+        "onRent": true,
+        "contactNo": "123-123-1234",
+        "amenities": [
+          "Power Backup",
+          "Parking",
+          "Swimming Pool"
+        ],
+        "photos": [
+          "https://images.pexels.com/photos/87223/pexels-photo-87223.jpeg?cs=srgb&dl=pexels-timur-saglambilek-87223.jpg&fm=jpg",
+          "https://images.pexels.com/photos/323775/pexels-photo-323775.jpeg?cs=srgb&dl=pexels-expect-best-323775.jpg&fm=jpg",
+          "https://images.pexels.com/photos/3663530/pexels-photo-3663530.jpeg?cs=srgb&dl=pexels-one-shot-3663530.jpg&fm=jpg",
+          "https://images.pexels.com/photos/280232/pexels-photo-280232.jpeg?cs=srgb&dl=pexels-pixabay-280232.jpg&fm=jpg"
+        ]
+      },
+      {
+        "id": 7,
+        "title": "GoWylde Team",
+        "type": "Villa",
+        "size": "2 BHK, 1200 sq-ft",
+        "address": "238 Speedvale Ave W, Guelph, ON N1H 1K4",
+        "city": "Downtown Kitchener",
+        "latitude": 43.452969,
+        "longitude": -80.495064,
+        "price": 1500,
+        "onSale": false,
+        "onRent": true,
+        "contactNo": "123-123-1234",
+        "amenities": [
+          "Power Backup",
+          "Parking",
+          "Swimming Pool"
+        ],
+        "photos": [
+          "https://images.pexels.com/photos/5604934/pexels-photo-5604934.jpeg?cs=srgb&dl=pexels-castorly-stock-5604934.jpg&fm=jpg",
+          "https://images.pexels.com/photos/4445265/pexels-photo-4445265.jpeg?cs=srgb&dl=pexels-diana-4445265.jpg&fm=jpg",
+          "https://images.pexels.com/photos/4445266/pexels-photo-4445266.jpeg?cs=srgb&dl=pexels-diana-4445266.jpg&fm=jpg"
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Flower Homes",
+        "type": " Apartment",
+        "size": "2 BHK, 1350 sq-ft",
+        "address": "Flower Homes, Missisauga",
+        "city": "Missisauga",
+        "latitude": 43.59531,
+        "longitude": -79.640579,
+        "price": 56500,
+        "onSale": true,
+        "onRent": false,
+        "contactNo": "123-123-1234",
+        "amenities": [
+          "Power Backup",
+          "Parking",
+          "Swimming Pool"
+        ],
+        "photos": [
+          "https://images.pexels.com/photos/164660/pexels-photo-164660.jpeg?cs=srgb&dl=pexels-pixabay-164660.jpg&fm=jpg",
+          "https://images.pexels.com/photos/1604141/pexels-photo-1604141.jpeg?cs=srgb&dl=pexels-ricardo-esquivel-1604141.jpg&fm=jpg",
+          "https://images.pexels.com/photos/2539076/pexels-photo-2539076.jpeg?cs=srgb&dl=pexels-ricardo-esquivel-2539076.jpg&fm=jpg"
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Alair Homes",
+        "type": " Villa",
+        "size": "3 BHK, 1300 sq-ft",
+        "address": "230 Scarboro Crescent, Scarborough, ON M1M 2J4",
+        "city": "Scarbrough",
+        "latitude": 43.777702,
+        "longitude": -79.2333238,
+        "price": 1700,
+        "onSale": false,
+        "onRent": true,
+        "contactNo": "123-123-1234",
+        "amenities": [
+          "Power Backup",
+          "Parking",
+          "Swimming Pool"
+        ],
+        "photos": [
+          "https://images.pexels.com/photos/4577349/pexels-photo-4577349.jpeg?cs=srgb&dl=pexels-rachel-claire-4577349.jpg&fm=jpg",
+          "https://images.pexels.com/photos/5875843/pexels-photo-5875843.jpeg?cs=srgb&dl=pexels-marta-wave-5875843.jpg&fm=jpg",
+          "https://images.pexels.com/photos/5875837/pexels-photo-5875837.jpeg?cs=srgb&dl=pexels-marta-wave-5875837.jpg&fm=jpg"
+        ]
+      },
+      {
+        "id": 10,
+        "title": "GoWylde Team",
+        "type": " Condos",
+        "size": "3 BHK, 1400 sq-ft",
+        "address": "238 Speedvale Ave W, Guelph, ON N1H 1K4",
+        "city": "Downtown Kitchener",
+        "latitude": 43.459269,
+        "longitude": -80.495064,
+        "price": 85000,
+        "onSale": true,
+        "onRent": false,
+        "contactNo": "123-123-1234",
+        "amenities": [
+          "Power Backup",
+          "Parking",
+          "Swimming Pool"
+        ],
+        "photos": [
+          "https://media.istockphoto.com/photos/suburban-duplex-homes-picture-id145913701",
+          "https://media.istockphoto.com/photos/staircase-luxury-home-in-modern-villa-beautiful-interior-picture-id1186610740",
+          "https://cdn.pixabay.com/photo/2018/04/07/03/06/real-estate-3297625_960_720.jpg"
+        ]
+      },
+      {
+        "id": 11,
+        "title": "WSP",
+        "type": "Apartment",
+        "size": "5 BHK, 5000 sq-ft",
+        "address": " 2 International Blvd Suite 201, Etobicoke, ON M9W 1A2",
+        "city": "Toronto",
+        "latitude": 58.452378,
+        "longitude": -60.346589,
+        "price": 10000,
+        "onSale": false,
+        "onRent": true,
+        "contactNo": "123-123-1234",
+        "amenities": [
+          "Power Backup",
+          "Parking",
+          "Swimming Pool"
+        ],
+        "photos": [
+          "https://cdn.pixabay.com/photo/2018/07/25/22/32/architecture-3562431_960_720.jpg",
+          "https://cdn.pixabay.com/photo/2017/08/06/23/59/bruges-2597741_960_720.jpg",
+          "https://cdn.pixabay.com/photo/2018/07/16/23/42/bergdorf-3543253_960_720.jpg",
+          "https://cdn.pixabay.com/photo/2020/04/08/18/00/castle-5018296_960_720.jpg"
+        ]
+      },
+      {
+        "id": 12,
+        "title": "NestWood",
+        "type": "Apartment",
+        "size": "3 BHK, 1650 sq-ft",
+        "address": "NestWood, Near University of Waterloo, Waterloo, D5G 8F3",
+        "city": "Waterloo",
+        "latitude": 43.390712,
+        "longitude": -80.405973,
+        "price": 65000,
+        "onSale": true,
+        "onRent": false,
+        "contactNo": "123-123-1234",
+        "amenities": [
+          "Power Backup",
+          "Parking",
+          "Club House",
+          "Gym",
+          "Swimming Pool"
+        ],
+        "photos": [
+          "https://images.pexels.com/photos/129494/pexels-photo-129494.jpeg?cs=srgb&dl=pexels-george-becker-129494.jpg&fm=jpg",
+          "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?cs=srgb&dl=pexels-pixabay-276724.jpg&fm=jpg",
+          "https://images.pexels.com/photos/3773583/pexels-photo-3773583.png?cs=srgb&dl=pexels-curtis-adams-3773583.jpg&fm=jpg",
+          "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?cs=srgb&dl=pexels-pixabay-271624.jpg&fm=jpg",
+          "https://images.pexels.com/photos/5824522/pexels-photo-5824522.jpeg?cs=srgb&dl=pexels-charlotte-may-5824522.jpg&fm=jpg"
+        ]
+      }
+    ]
+  }
+}

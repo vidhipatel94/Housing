@@ -11,19 +11,19 @@ import Foundation
 class House {
     
     var id: Int
-    var title: String
-    var type: String
-    var size: String
-    var address: String
-    var city: String
-    var latitude: Double
-    var longitude: Double
-    var price: Double
-    var onSale: Bool
-    var onRent: Bool
-    var contactNo: String
-    var amenities: [String]
-    var photos: [String]
+    var title: String!
+    var type: String!
+    var size: String!
+    var address: String!
+    var city: String!
+    var latitude: Double!
+    var longitude: Double!
+    var price: Double!
+    var onSale: Bool!
+    var onRent: Bool!
+    var contactNo: String!
+    var amenities: [String]!
+    var photos: [String]!
     
     init(id: Int, title: String, type: String, size: String, address: String, city: String,
          latitude: Double, longitude: Double, price: Double, onSale: Bool, onRent: Bool,

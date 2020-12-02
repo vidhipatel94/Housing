@@ -109,4 +109,6 @@ class HouseStore {
         contactNo: contactNo, amenities: amenities, photos: photos)
     }
     
+    
+    
 }
