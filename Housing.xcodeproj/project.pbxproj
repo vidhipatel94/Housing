@@ -10,6 +10,7 @@
 		F8181D122573B91F004022F2 /* House.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8181D112573B91F004022F2 /* House.swift */; };
 		F8181D142573DF2A004022F2 /* HouseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8181D132573DF2A004022F2 /* HouseStore.swift */; };
 		F85ED633257781F60044E0D1 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85ED632257781F60044E0D1 /* Filter.swift */; };
+		F85ED6352577A9E70044E0D1 /* DetailPhotoCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85ED6342577A9E70044E0D1 /* DetailPhotoCellView.swift */; };
 		F86BFCEB2573975700527AFD /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86BFCEA2573975700527AFD /* DashboardViewController.swift */; };
 		F86BFCED2573979700527AFD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86BFCEC2573979700527AFD /* RegisterViewController.swift */; };
 		F86BFCEF2573AFDE00527AFD /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86BFCEE2573AFDE00527AFD /* FilterViewController.swift */; };
@@ -27,6 +28,7 @@
 		F8181D112573B91F004022F2 /* House.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House.swift; sourceTree = "<group>"; };
 		F8181D132573DF2A004022F2 /* HouseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseStore.swift; sourceTree = "<group>"; };
 		F85ED632257781F60044E0D1 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		F85ED6342577A9E70044E0D1 /* DetailPhotoCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPhotoCellView.swift; sourceTree = "<group>"; };
 		F86BFCEA2573975700527AFD /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		F86BFCEC2573979700527AFD /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		F86BFCEE2573AFDE00527AFD /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				F8181D112573B91F004022F2 /* House.swift */,
 				F8181D132573DF2A004022F2 /* HouseStore.swift */,
 				F85ED632257781F60044E0D1 /* Filter.swift */,
+				F85ED6342577A9E70044E0D1 /* DetailPhotoCellView.swift */,
 			);
 			path = Housing;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 				F8C6D8AA2571837700F725B2 /* Housing.xcdatamodeld in Sources */,
 				F85ED633257781F60044E0D1 /* Filter.swift in Sources */,
 				F86BFCED2573979700527AFD /* RegisterViewController.swift in Sources */,
+				F85ED6352577A9E70044E0D1 /* DetailPhotoCellView.swift in Sources */,
 				F8C6D8A02571837700F725B2 /* AppDelegate.swift in Sources */,
 				F8181D122573B91F004022F2 /* House.swift in Sources */,
 				F8C6D8A22571837700F725B2 /* SceneDelegate.swift in Sources */,

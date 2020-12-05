@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum GetHousesResult {
     case Success([House])
@@ -16,6 +17,15 @@ enum GetHousesResult {
 enum GetHousesError : Error {
     case InvalidJsonError
     case UnexpectedError
+}
+
+enum FetchImageResult {
+    case Success(UIImage)
+    case failure(Error)
+}
+
+enum PhotoError : Error {
+    case PhotoCreationError
 }
 
 class HouseStore {
@@ -130,5 +140,44 @@ class HouseStore {
             }
             onComplete(finalHouses)
         }
+    }
+    
+    func fetchImage(for url: String, completion: @escaping (FetchImageResult)->Void){
+        let request = URLRequest(url: URL(string: url)!)
+        let task = urlSession.dataTask(with: request){
+            (data,response,error)->Void in
+        
+            var result: FetchImageResult!
+            var hasError = false
+            if let _ = data {
+                result = self.processImageResult(data,error)
+            } else if let requestError = error {
+                hasError = true
+                print("Error: fetching image: \(requestError)")
+            } else {
+                hasError = true
+                print("Error: unexpected")
+            }
+            OperationQueue.main.addOperation {
+                if !hasError {
+                    completion(result)
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    private func processImageResult(_ data:Data?, _ error:Error?)->FetchImageResult{
+        guard
+            let imageData = data,
+            let image = UIImage(data: imageData)
+            else {
+                if let _ = data {
+                    return .failure(error!)
+                } else {
+                    return .failure(PhotoError.PhotoCreationError)
+                }
+        }
+        return .Success(image)
     }
 }
