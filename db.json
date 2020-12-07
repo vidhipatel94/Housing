@@ -13,7 +13,7 @@
         "price": 1500.5,
         "onSale": false,
         "onRent": true,
-        "contactNo": "123-123-1234",
+        "contactNo": "+11231231234",
         "amenities": [
           "Power Backup",
           "Parking",
@@ -38,7 +38,7 @@
         "price": 1200,
         "onSale": false,
         "onRent": true,
-        "contactNo": "123-123-1234",
+        "contactNo": "+12222222222",
         "amenities": [
           "Power Backup",
           "Parking"
@@ -62,7 +62,7 @@
         "price": 1800,
         "onSale": false,
         "onRent": true,
-        "contactNo": "123-123-1234",
+        "contactNo": "+12223334444",
         "amenities": [
           "Power Backup",
           "Parking",
@@ -86,7 +86,7 @@
         "price": 10000,
         "onSale": false,
         "onRent": true,
-        "contactNo": "123-123-1234",
+        "contactNo": "+13332223333",
         "amenities": [
           "Power Backup",
           "Parking",
@@ -111,7 +111,7 @@
         "price": 1700,
         "onSale": false,
         "onRent": true,
-        "contactNo": "123-123-1234",
+        "contactNo": "+12224443333",
         "amenities": [
           "Power Backup",
           "Parking",
@@ -135,7 +135,7 @@
         "price": 1700,
         "onSale": false,
         "onRent": true,
-        "contactNo": "123-123-1234",
+        "contactNo": "+10987654321",
         "amenities": [
           "Power Backup",
           "Parking",
@@ -160,7 +160,7 @@
         "price": 1500,
         "onSale": false,
         "onRent": true,
-        "contactNo": "123-123-1234",
+        "contactNo": "+11234567890",
         "amenities": [
           "Power Backup",
           "Parking",
@@ -184,7 +184,7 @@
         "price": 56500,
         "onSale": true,
         "onRent": false,
-        "contactNo": "123-123-1234",
+        "contactNo": "+19999999999",
         "amenities": [
           "Power Backup",
           "Parking",
@@ -208,7 +208,7 @@
         "price": 1700,
         "onSale": false,
         "onRent": true,
-        "contactNo": "123-123-1234",
+        "contactNo": "+13333333333",
         "amenities": [
           "Power Backup",
           "Parking",
@@ -232,7 +232,7 @@
         "price": 85000,
         "onSale": true,
         "onRent": false,
-        "contactNo": "123-123-1234",
+        "contactNo": "+14444444444",
         "amenities": [
           "Power Backup",
           "Parking",
@@ -256,7 +256,7 @@
         "price": 10000,
         "onSale": false,
         "onRent": true,
-        "contactNo": "123-123-1234",
+        "contactNo": "+13332223333",
         "amenities": [
           "Power Backup",
           "Parking",
@@ -281,7 +281,7 @@
         "price": 65000,
         "onSale": true,
         "onRent": false,
-        "contactNo": "123-123-1234",
+        "contactNo": "+14443332222",
         "amenities": [
           "Power Backup",
           "Parking",

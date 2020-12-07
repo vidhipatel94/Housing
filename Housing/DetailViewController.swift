@@ -16,6 +16,7 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var photosCollectionView: UICollectionView!
     @IBOutlet weak var bigImageView: UIImageView!
+    @IBOutlet weak var bigImageSpinner: UIActivityIndicatorView!
     
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var rentOrBuyLabel: UILabel!
@@ -29,6 +30,7 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,14 +42,7 @@ class DetailViewController: UIViewController {
             //print(self.house.toString())
             self.photosCollectionView.reloadData()
             
-            HouseStore.instance.fetchImage(for: self.house.photos[0]) { (imageResult)->Void in
-                switch(imageResult) {
-                case let .Success(image):
-                    self.bigImageView.image = image
-                case let .failure(error):
-                    print("Error on fetching image \(error)")
-                }
-            }
+            self.loadBigImage(imageUrl: self.house.photos[0])
             
             self.loadData();
         }
@@ -84,6 +79,53 @@ class DetailViewController: UIViewController {
         mapView.addAnnotation(annotation)
     }
     
+    @IBAction func onClickContact(_ sender: Any) {
+        if let _ = house, let contactNo = house.contactNo {
+            let title = "Contact Owner";
+            let actionCancelStr = "Cancel";
+            let actionSMSStr = "Send SMS";
+            let smsMessage = "Hello, I'm from Housing app. I am interested in your house " + house.title;
+            
+            let alert = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
+            
+            let cancelAction = UIAlertAction(title: actionCancelStr, style: .cancel, handler: nil)
+            alert.addAction(cancelAction)
+            
+            let smsAction = UIAlertAction(title: actionSMSStr, style: .default, handler: {
+                (action) -> Void in
+                let sms: String = "sms:\(contactNo)&body=\(smsMessage)"
+                let urlStr: String = sms.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+                UIApplication.shared.open(URL.init(string: urlStr)!, options: [:], completionHandler: nil)
+            })
+            alert.addAction(smsAction)
+            
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    private func loadBigImage(imageUrl: String){
+        HouseStore.instance.fetchImage(for: imageUrl) { (imageResult)->Void in
+            self.bigImageSpinner.stopAnimating()
+            switch(imageResult) {
+            case let .Success(image):
+                self.bigImageView.image = image
+            case let .failure(error):
+                print("Error on fetching image \(error)")
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "MapSegue"?:
+            let mapVC = segue.destination as! MapViewController
+            mapVC.latitude = house.latitude
+            mapVC.longitude = house.longitude
+            mapVC.houseTitle = house.title
+        default:
+            print("Segue id not found")
+        }
+    }
 }
 
 extension DetailViewController : UICollectionViewDataSource {
@@ -97,6 +139,13 @@ extension DetailViewController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return photosCollectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! DetailPhotoCellView
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let index = indexPath.row;
+        if let photos = house.photos, index < photos.count {
+            loadBigImage(imageUrl: house.photos[index])
+        }
     }
 }
 
