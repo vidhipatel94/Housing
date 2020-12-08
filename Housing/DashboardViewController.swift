@@ -24,7 +24,6 @@ class DashboardViewController: UIViewController {
         
         self.navigationItem.hidesBackButton = true
         
-        cityCollectionView.delegate = self
         cityCollectionView.dataSource = self
         
         searchButton.layer.borderColor = UIColor.white.cgColor
@@ -112,28 +111,8 @@ extension DashboardViewController : UICollectionViewDataSource {
         let cellView = cityCollectionView.dequeueReusableCell(withReuseIdentifier: "CityCell", for: indexPath) as! CityCellView
         let cityListing = cityListings[indexPath.row]
         cellView.titleView.text = cityListing.city
+        cellView.imageView.loadUrl(url: cityListing.imageUrl, spinner: cellView.spinnerView)
         return cellView;
-    }
-}
-
-extension DashboardViewController : UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if cityListings.count > 0 {
-            
-            let cityListing = cityListings[indexPath.row]
-            
-            HouseStore.instance.fetchImage(for: cityListing.imageUrl) { (imageResult) in
-                guard
-                    case let .Success(image) = imageResult
-                    else {
-                        return
-                }
-                let cityIndexPath = IndexPath(item: indexPath.row, section: 0)
-                if let cell = self.cityCollectionView.cellForItem(at: cityIndexPath) as? CityCellView {
-                    cell.updateView(image: image)
-                }
-            }
-        }
     }
 }
 

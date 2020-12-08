@@ -38,8 +38,7 @@ class DetailViewController: UIViewController {
         photosCollectionView.delegate = self
         
         HouseStore.instance.getHouses { (houses)-> Void in
-            self.house = houses[2]
-            //print(self.house.toString())
+            self.house = houses[0]
             self.photosCollectionView.reloadData()
             
             self.loadBigImage(imageUrl: self.house.photos[0])
@@ -104,15 +103,7 @@ class DetailViewController: UIViewController {
     }
     
     private func loadBigImage(imageUrl: String){
-        HouseStore.instance.fetchImage(for: imageUrl) { (imageResult)->Void in
-            self.bigImageSpinner.stopAnimating()
-            switch(imageResult) {
-            case let .Success(image):
-                self.bigImageView.image = image
-            case let .failure(error):
-                print("Error on fetching image \(error)")
-            }
-        }
+        bigImageView.loadUrl(url: imageUrl, spinner: bigImageSpinner)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -138,7 +129,9 @@ extension DetailViewController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return photosCollectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! DetailPhotoCellView
+        let cellView = photosCollectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! DetailPhotoCellView
+        cellView.imageView.loadUrl(url: house.photos[indexPath.row], spinner: cellView.spinnerView)
+        return cellView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -150,29 +143,5 @@ extension DetailViewController : UICollectionViewDataSource {
 }
 
 extension DetailViewController : UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print("\(indexPath.row)")
-        if let _ = house, let _ = house.photos {
-            
-            let photo = house.photos[indexPath.row]
-            
-            HouseStore.instance.fetchImage(for: photo) { (imageResult) in
-                guard
-                    let photoIndex = self.house.photos.firstIndex(of: photo),
-                    case let .Success(image) = imageResult
-                    else {
-                        return
-                }
-                let photoIndexPath = IndexPath(item: photoIndex, section: 0)
-                if let cell = self.photosCollectionView.cellForItem(at: photoIndexPath) as? DetailPhotoCellView {
-                    cell.updateView(image)
-                }
-            }
-            
-        }
-    }
-}
-
-extension UIImageView {
     
 }

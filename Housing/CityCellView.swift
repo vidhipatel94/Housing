@@ -14,15 +14,4 @@ class CityCellView : UICollectionViewCell {
     @IBOutlet var spinnerView: UIActivityIndicatorView!
     
     @IBOutlet var titleView: UILabel!
-    
-    func updateView(image: UIImage?){
-        if let image1 = image {
-            spinnerView.stopAnimating()
-            imageView.image = image1
-        } else {
-            spinnerView.startAnimating()
-            imageView.image = nil
-        }
-    }
 }
-
