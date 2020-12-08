@@ -13,13 +13,46 @@ class DashboardViewController: UIViewController {
     
     var cityListings = [CityListing]()
     
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var buyButton: UIButton!
+    @IBOutlet weak var rentButton: UIButton!
+    
+    @IBOutlet weak var cityCollectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.hidesBackButton = true
         
-        getCitiesWithListing()
+        cityCollectionView.delegate = self
+        cityCollectionView.dataSource = self
         
+        searchButton.layer.borderColor = UIColor.white.cgColor
+        searchButton.layer.borderWidth = 1
+        searchButton.layer.cornerRadius = 4
+        searchButton.contentEdgeInsets.left = 20
+        searchButton.contentEdgeInsets.right = 20
+        searchButton.contentEdgeInsets.top = 10
+        searchButton.contentEdgeInsets.bottom = 10
+        
+        let greenColor = UIColor(red: 0.42, green: 0.73, blue: 0.6, alpha: 1).cgColor
+        buyButton.layer.borderColor = greenColor
+        buyButton.layer.borderWidth = 1
+        buyButton.layer.cornerRadius = 4
+        buyButton.contentEdgeInsets.left = 20
+        buyButton.contentEdgeInsets.right = 20
+        buyButton.contentEdgeInsets.top = 10
+        buyButton.contentEdgeInsets.bottom = 10
+        
+        rentButton.layer.borderColor = greenColor
+        rentButton.layer.borderWidth = 1
+        rentButton.layer.cornerRadius = 4
+        rentButton.contentEdgeInsets.left = 20
+        rentButton.contentEdgeInsets.right = 20
+        rentButton.contentEdgeInsets.top = 10
+        rentButton.contentEdgeInsets.bottom = 10
+        
+        getCitiesWithListing()
     }
     
     private func getCitiesWithListing() {
@@ -36,7 +69,12 @@ class DashboardViewController: UIViewController {
                 }
             }
             
-            // reload collection view
+            // change height of collection view because it is inside scrollview and scoll of collectionview is disabled
+            let heightConstraint = self.cityCollectionView.heightAnchor.constraint(equalToConstant: CGFloat((128+10) * self.cityListings.count/2 + 20))
+            heightConstraint.isActive = true
+            self.cityCollectionView.layoutIfNeeded()
+            
+            self.cityCollectionView.reloadData()
         }
     }
     
@@ -52,11 +90,51 @@ class DashboardViewController: UIViewController {
             listVC.filter = Filter()
             listVC.filter.onBuy = false
             listVC.filter.onRent = true
+        case "CitySegue"?:
+            if let selectedIndexPath = cityCollectionView.indexPathsForSelectedItems?.first {
+                let listVC = segue.destination as! ListViewController
+                listVC.filter = Filter()
+                listVC.filter.city = cityListings[selectedIndexPath.row].city
+            }
         default:
             print("Unexpected segue identifier")
         }
     }
     
+}
+
+extension DashboardViewController : UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return cityListings.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cellView = cityCollectionView.dequeueReusableCell(withReuseIdentifier: "CityCell", for: indexPath) as! CityCellView
+        let cityListing = cityListings[indexPath.row]
+        cellView.titleView.text = cityListing.city
+        return cellView;
+    }
+}
+
+extension DashboardViewController : UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if cityListings.count > 0 {
+            
+            let cityListing = cityListings[indexPath.row]
+            
+            HouseStore.instance.fetchImage(for: cityListing.imageUrl) { (imageResult) in
+                guard
+                    case let .Success(image) = imageResult
+                    else {
+                        return
+                }
+                let cityIndexPath = IndexPath(item: indexPath.row, section: 0)
+                if let cell = self.cityCollectionView.cellForItem(at: cityIndexPath) as? CityCellView {
+                    cell.updateView(image: image)
+                }
+            }
+        }
+    }
 }
 
 class CityListing {
