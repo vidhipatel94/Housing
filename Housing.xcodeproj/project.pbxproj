@@ -25,6 +25,7 @@
 		F8C6D8AC2571837900F725B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8C6D8AB2571837900F725B2 /* Assets.xcassets */; };
 		F8C6D8AF2571837900F725B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8C6D8AD2571837900F725B2 /* LaunchScreen.storyboard */; };
 		F8EB4483257E4E5400511401 /* CityCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EB4482257E4E5400511401 /* CityCellView.swift */; };
+		FF9C56472580AE51001A92A0 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9C56462580AE51001A92A0 /* FilterTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		F8C6D8AE2571837900F725B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F8C6D8B02571837900F725B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8EB4482257E4E5400511401 /* CityCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCellView.swift; sourceTree = "<group>"; };
+		FF9C56462580AE51001A92A0 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				F81CAA4C257E0C3100FBEB11 /* MapViewController.swift */,
 				F8EB4482257E4E5400511401 /* CityCellView.swift */,
 				F85925C3257FEAD700D2470D /* ImageViewExtension.swift */,
+				FF9C56462580AE51001A92A0 /* FilterTableViewCell.swift */,
 			);
 			path = Housing;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				F8C6D8A22571837700F725B2 /* SceneDelegate.swift in Sources */,
 				F86BFCEB2573975700527AFD /* DashboardViewController.swift in Sources */,
 				F86BFCF12573B01E00527AFD /* ListViewController.swift in Sources */,
+				FF9C56472580AE51001A92A0 /* FilterTableViewCell.swift in Sources */,
 				F8181D142573DF2A004022F2 /* HouseStore.swift in Sources */,
 				F86BFCF32573B05400527AFD /* DetailViewController.swift in Sources */,
 			);

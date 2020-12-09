@@ -57,4 +57,41 @@ class ListViewController: UIViewController {
         }
     }
     
+    @IBAction func unwindToVC1(segue:UIStoryboardSegue) {
+        self.tableView.reloadData()
+    }
+    
+}
+
+extension ListViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.houses.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FilterTableViewCell") as! FilterTableViewCell
+        cell.selectionStyle = .none
+        let details = self.houses[indexPath.row]
+        cell.lbl_Title.text = details.title
+        cell.lbl_City.text = details.city
+        cell.lbl_Price.text = "$ \(details.price ?? 0.0)"
+        cell.lbl_Type.text = details.type
+        print(details.photos[0])
+        cell.imgView_Image?.loadUrl(url: details.photos[0], spinner: cell.loader)
+        return cell
+    }
+    
+    
+}
+
+extension UIViewController {
+    
+    func showAlert(_ message:String)  {
+        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
+    }
+
 }
