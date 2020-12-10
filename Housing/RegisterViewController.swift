@@ -77,36 +77,36 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         addressdata = address.text
         
         if namedata == nil || namedata.trimmingCharacters(in: .whitespaces).count == 0 {
-            error.text = "Enter name"
+            error.text = NSLocalizedString("Enter name", comment: "Error")
             return false
         }
         
         if emaildata == nil || emaildata.trimmingCharacters(in: .whitespaces).count == 0 {
-            error.text = "Enter email address"
+            error.text = NSLocalizedString("Enter email address", comment: "Error")
             return false
         }
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailResult = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         let emailValid = emailResult.evaluate(with: emaildata)
         if !emailValid {
-            error.text = "Email address is not valid"
+            error.text = NSLocalizedString("Email address is not valid", comment: "Error")
             return false
         }
         
         if phonedata == nil || phonedata.trimmingCharacters(in: .whitespaces).count == 0 {
-            error.text = "Enter phone number"
+            error.text = NSLocalizedString("Enter phone number", comment: "Error")
             return false
         }
         let phoneRegEx = "^\\d{3}[\\- ]?\\d{3}[\\- ]?\\d{4}$"
         let phoneResult = NSPredicate(format: "SELF MATCHES %@", phoneRegEx)
         let phoneValid = phoneResult.evaluate(with: phonedata)
         if !phoneValid {
-            error.text = "Phone number is not valid"
+            error.text = NSLocalizedString("Phone number is not valid", comment: "Error")
             return false
         }
         
         if addressdata == nil || addressdata.trimmingCharacters(in: .whitespaces).count == 0 {
-            error.text = "Enter address"
+            error.text = NSLocalizedString("Enter address", comment: "Error")
             return false
         }
         

@@ -35,7 +35,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         if house == nil {
-            showAlert("Sorry, house information not found!")
+            showAlert(NSLocalizedString("Sorry, house information not found!", comment: "Error"))
             return
         }
         
@@ -49,7 +49,7 @@ class DetailViewController: UIViewController {
     
     func loadData() {
         priceLabel.text = "$\(String(format: "%.2f", house.price))"
-        rentOrBuyLabel.text = house.onRent ? "For Rent" : "For Sale"
+        rentOrBuyLabel.text = house.onRent ? NSLocalizedString("For Rent", comment: "For Rent") : NSLocalizedString("For Sale", comment: "For Sale")
         titleLabel.text = house.title
         addressLabel.text = house.address
         cityLabel.text = house.city
@@ -79,10 +79,10 @@ class DetailViewController: UIViewController {
     
     @IBAction func onClickContact(_ sender: Any) {
         if let _ = house, let contactNo = house.contactNo {
-            let title = "Contact Owner";
-            let actionCancelStr = "Cancel";
-            let actionSMSStr = "Send SMS";
-            let smsMessage = "Hello, I'm from Housing app. I am interested in your house " + house.title;
+            let title = NSLocalizedString("Contact Owner", comment: "Title");
+            let actionCancelStr = NSLocalizedString("Cancel", comment: "Button");
+            let actionSMSStr = NSLocalizedString("Send SMS", comment: "Button");
+            let smsMessage = NSLocalizedString("Hello, I'm from Housing app. I am interested in your house: ", comment: "Message") + house.title;
             
             let alert = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
             

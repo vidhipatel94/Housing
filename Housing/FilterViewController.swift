@@ -132,7 +132,7 @@ class FilterViewController: UIViewController {
             cityPickerView.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
             self.view.addSubview(cityPickerView)
             toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
-            toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneCityButtonTapped))]
+            toolBar.items = [UIBarButtonItem.init(title: NSLocalizedString("Done", comment: "Button"), style: .done, target: self, action: #selector(onDoneCityButtonTapped))]
             self.view.addSubview(toolBar)
         case 103://Property Type Button
             view.endEditing(true)
@@ -150,7 +150,7 @@ class FilterViewController: UIViewController {
             self.view.addSubview(propertyPickerView)
             
             toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
-            toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDonePropertyButtonTapped))]
+            toolBar.items = [UIBarButtonItem.init(title: NSLocalizedString("Done", comment: "Button"), style: .done, target: self, action: #selector(onDonePropertyButtonTapped))]
             self.view.addSubview(toolBar)
         case 104://Apply Button
             toolBar.removeFromSuperview()
@@ -176,22 +176,22 @@ class FilterViewController: UIViewController {
     func checkValidation() {
         if selectedType == "0" {
             //Show Alert select Type
-            showAlert("Please select search type")
-        } else if lbl_City.text == "Select" {
+            showAlert(NSLocalizedString("Please select search type", comment: "Error"))
+        } else if lbl_City.text == NSLocalizedString("Select", comment: "Select") {
             //Show Alert select City
-            showAlert("Please select city")
-        } else if lbl_PropertyType.text == "Select" {
+            showAlert(NSLocalizedString("Please select city", comment: "Error"))
+        } else if lbl_PropertyType.text == NSLocalizedString("Select", comment: "Select") {
             //Show Alert select Property Type
-            showAlert("Please select property type")
+            showAlert(NSLocalizedString("Please select property type", comment: "Error"))
         } else if txtField_Min.text!.isEmpty {
             //Show Alert Add minimum value
-            showAlert("Please select minimum value")
+            showAlert(NSLocalizedString("Please select minimum value", comment: "Error"))
         } else if txtField_Max.text!.isEmpty {
             //Show Alert Add maximum value
-            showAlert("Please select maximum value")
+            showAlert(NSLocalizedString("Please select maximum value", comment: "Error"))
         } else if Int(txtField_Min.text!)! > Int(txtField_Max.text!)! {
             //Show Alert Minimum value should be less
-            showAlert("Maximum value should be greater than minimum value")
+            showAlert(NSLocalizedString("Maximum value should be greater than minimum value", comment: "Error"))
         } else {
             if selectedType == "1" {
                 filter.onBuy = true
@@ -207,7 +207,7 @@ class FilterViewController: UIViewController {
             
             HouseStore.instance.getFilteredHouses(filter: filter) { (house) in
                 if house.count == 0 {
-                    self.showAlert("No result found")
+                    self.showAlert(NSLocalizedString("No result found", comment: "Error"))
                 } else {
                     self.houseArray = house
                     self.performSegue(withIdentifier: "unwindToback", sender: self)

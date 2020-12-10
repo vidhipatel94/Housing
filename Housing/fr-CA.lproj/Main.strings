@@ -1,0 +1,144 @@
+
+/* Class = "UILabel"; text = "ABC Title"; ObjectID = "0Qu-l4-0Wy"; */
+"0Qu-l4-0Wy.text" = "Titre";
+
+/* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "1A8-bq-9M8"; */
+"1A8-bq-9M8.title" = "Filtre";
+
+/* Class = "UIButton"; normalTitle = "Open Map"; ObjectID = "1YC-NX-0rk"; */
+"1YC-NX-0rk.normalTitle" = "Ouvrir la carte";
+
+/* Class = "UILabel"; text = "Phone No"; ObjectID = "3Nr-hl-if5"; */
+"3Nr-hl-if5.text" = "Téléphone";
+
+/* Class = "UIButton"; normalTitle = "Rent"; ObjectID = "6Ah-7W-4me"; */
+"6Ah-7W-4me.normalTitle" = "Louer";
+
+/* Class = "UINavigationItem"; title = "List"; ObjectID = "9EJ-ka-UF1"; */
+"9EJ-ka-UF1.title" = "liste";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "AIh-qp-Dfl"; */
+"AIh-qp-Dfl.text" = "Adresse";
+
+/* Class = "UINavigationItem"; title = "Housing"; ObjectID = "ApD-qp-OU1"; */
+"ApD-qp-OU1.title" = "Housing";
+
+/* Class = "UILabel"; text = "Amenities"; ObjectID = "BE9-Vk-8Qy"; */
+"BE9-Vk-8Qy.text" = "l' équipements";
+
+/* Class = "UILabel"; text = "Let us know about you!"; ObjectID = "DwX-1C-E7y"; */
+"DwX-1C-E7y.text" = "Faites nous part de vous!";
+
+/* Class = "UINavigationItem"; title = "Filter"; ObjectID = "EtQ-Rh-gqR"; */
+"EtQ-Rh-gqR.title" = "Filtre";
+
+/* Class = "UILabel"; text = "Min"; ObjectID = "Fzy-VH-mZy"; */
+"Fzy-VH-mZy.text" = "Min";
+
+/* Class = "UILabel"; text = "$50"; ObjectID = "G29-DQ-Urw"; */
+"G29-DQ-Urw.text" = "$50";
+
+/* Class = "UIButton"; normalTitle = "Apply"; ObjectID = "GHX-L5-l4e"; */
+"GHX-L5-l4e.normalTitle" = "Appliquer";
+
+/* Class = "UILabel"; text = "$1500"; ObjectID = "GYh-my-dKY"; */
+"GYh-my-dKY.text" = "$1500";
+
+/* Class = "UILabel"; text = "Rent"; ObjectID = "Gui-pA-myR"; */
+"Gui-pA-myR.text" = "Louer";
+
+/* Class = "UILabel"; text = "Apartment"; ObjectID = "HQc-a3-6kT"; */
+"HQc-a3-6kT.text" = "Appartement";
+
+/* Class = "UILabel"; text = "Housing"; ObjectID = "JOa-9m-k2S"; */
+"JOa-9m-k2S.text" = "Housing";
+
+/* Class = "UILabel"; text = "3 BHK, 1200 sq-ft"; ObjectID = "MHi-p1-egd"; */
+"MHi-p1-egd.text" = "3 BHK, 1200 sq-ft";
+
+/* Class = "UINavigationItem"; title = "Get Started"; ObjectID = "R5f-vj-Skn"; */
+"R5f-vj-Skn.title" = "Commencer";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "Rkw-MR-jIr"; */
+"Rkw-MR-jIr.text" = "Nom";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "SWY-KE-PvR"; */
+"SWY-KE-PvR.normalTitle" = "D'accord!";
+
+/* Class = "UILabel"; text = "ABC City"; ObjectID = "ShB-4H-ejZ"; */
+"ShB-4H-ejZ.text" = "Cité";
+
+/* Class = "UILabel"; text = "4155 Maybelle Green"; ObjectID = "UOl-ah-VoS"; */
+"UOl-ah-VoS.text" = "4155 Maybelle Green";
+
+/* Class = "UILabel"; text = "Size:"; ObjectID = "WRT-8z-wSA"; */
+"WRT-8z-wSA.text" = "Taille:";
+
+/* Class = "UILabel"; text = "Type"; ObjectID = "Y37-66-mjk"; */
+"Y37-66-mjk.text" = "Catégorie";
+
+/* Class = "UIBarButtonItem"; title = "Contact"; ObjectID = "aka-gw-csX"; */
+"aka-gw-csX.title" = "Contacter";
+
+/* Class = "UILabel"; text = "City"; ObjectID = "cU9-Xl-OZg"; */
+"cU9-Xl-OZg.text" = "Cité";
+
+/* Class = "UILabel"; text = "About"; ObjectID = "cuy-OI-BO3"; */
+"cuy-OI-BO3.text" = "À propos de";
+
+/* Class = "UILabel"; text = "Search Type"; ObjectID = "d3U-d9-lra"; */
+"d3U-d9-lra.text" = "Type de recherche";
+
+/* Class = "UILabel"; text = "Waterloo"; ObjectID = "dBd-wC-R9U"; */
+"dBd-wC-R9U.text" = "Waterloo";
+
+/* Class = "UILabel"; text = "For Rent"; ObjectID = "dV2-ui-BIB"; */
+"dV2-ui-BIB.text" = "A louer";
+
+/* Class = "UILabel"; text = "Max"; ObjectID = "dac-0L-xYq"; */
+"dac-0L-xYq.text" = "Max";
+
+/* Class = "UILabel"; text = "Welcome"; ObjectID = "dln-5N-mD1"; */
+"dln-5N-mD1.text" = "Bienvenu";
+
+/* Class = "UILabel"; text = "Which type of house you are searching for today?"; ObjectID = "gpi-RU-O01"; */
+"gpi-RU-O01.text" = "Quel type de maison recherchez-vous aujourd'hui?";
+
+/* Class = "UILabel"; text = "Email ID"; ObjectID = "h57-xQ-joB"; */
+"h57-xQ-joB.text" = "ID e-mail";
+
+/* Class = "UILabel"; text = "Select"; ObjectID = "jCk-67-aoY"; */
+"jCk-67-aoY.text" = "Choisir";
+
+/* Class = "UINavigationItem"; title = "Detail"; ObjectID = "jdc-0V-Zli"; */
+"jdc-0V-Zli.title" = "Détail";
+
+/* Class = "UILabel"; text = "City"; ObjectID = "jmi-0x-scE"; */
+"jmi-0x-scE.text" = "Cité";
+
+/* Class = "UIButton"; normalTitle = "Search"; ObjectID = "mEj-7Y-dBd"; */
+"mEj-7Y-dBd.normalTitle" = "Chercher";
+
+/* Class = "UILabel"; text = "Type:"; ObjectID = "odJ-Eg-ctO"; */
+"odJ-Eg-ctO.text" = "Catégorie:";
+
+/* Class = "UILabel"; text = "Sant Jalaram Society, Ved Road, Surat 395004"; ObjectID = "p6R-C5-nnF"; */
+"p6R-C5-nnF.text" = "Sant Jalaram Society, Ved Road, Surat 395004";
+
+/* Class = "UIButton"; normalTitle = "Buy"; ObjectID = "skv-ps-ns3"; */
+"skv-ps-ns3.normalTitle" = "Acheter";
+
+/* Class = "UILabel"; text = "Buy"; ObjectID = "t3o-UY-VAq"; */
+"t3o-UY-VAq.text" = "Acheter";
+
+/* Class = "UILabel"; text = "Property Type"; ObjectID = "u0p-TA-fLv"; */
+"u0p-TA-fLv.text" = "Type de propriété";
+
+/* Class = "UILabel"; text = "Select"; ObjectID = "wKd-jv-5WV"; */
+"wKd-jv-5WV.text" = "Choisir";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "xjQ-zo-tEt"; */
+"xjQ-zo-tEt.text" = "Emplacement";
+
+/* Class = "UILabel"; text = "Price Range"; ObjectID = "yuC-Tt-m9g"; */
+"yuC-Tt-m9g.text" = "Échelle des prix";

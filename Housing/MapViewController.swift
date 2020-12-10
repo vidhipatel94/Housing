@@ -47,7 +47,7 @@ class MapViewController: UIViewController {
         var actionStandard : UIAction;
         if self.mapView.mapType == .standard {
             actionStandard = UIAction(
-                title: "Standard Map",
+                title: NSLocalizedString("Standard Map", comment: "Menu"),
                 image: nil,
                 identifier: nil,
                 attributes: UIMenuElement.Attributes.disabled) { _ in
@@ -55,7 +55,7 @@ class MapViewController: UIViewController {
             }
         } else {
             actionStandard = UIAction(
-                title: "Standard Map",
+                title: NSLocalizedString("Standard Map", comment: "Menu"),
                 image: nil,
                 identifier: nil) { _ in
                     self.mapView.mapType = .standard
@@ -65,7 +65,7 @@ class MapViewController: UIViewController {
         var actionSatellite : UIAction
         if self.mapView.mapType == .satellite {
             actionSatellite = UIAction(
-                title: "Satellite Map",
+                title: NSLocalizedString("Satellite Map", comment: "Menu"),
                 image: nil,
                 identifier: nil,
                 attributes: UIMenuElement.Attributes.disabled) { _ in
@@ -73,7 +73,7 @@ class MapViewController: UIViewController {
             }
         } else {
             actionSatellite = UIAction(
-                title: "Satellite Map",
+                title: NSLocalizedString("Satellite Map", comment: "Menu"),
                 image: nil,
                 identifier: nil) { _ in
                     self.mapView.mapType = .satellite
@@ -81,14 +81,14 @@ class MapViewController: UIViewController {
         }
         
         let actionReload = UIAction(
-            title: "Refresh Location",
+            title: NSLocalizedString("Refresh Location", comment: "Menu"),
             image: nil,
             identifier: nil) { _ in
                 self.setMapRegion()
         }
         
         let actionClose = UIAction(
-            title: "Close",
+            title: NSLocalizedString("Close", comment: "Button"),
             image: nil,
             identifier: nil,
             attributes: .destructive) { _ in

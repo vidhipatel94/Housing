@@ -122,8 +122,8 @@ class DashboardViewController: UIViewController {
     @objc func handleLangTap(_ sender: UITapGestureRecognizer? = nil) {
         becomeFirstResponder()
         let menu = UIMenuController.shared
-        let engLangItem = UIMenuItem(title: "English", action: #selector(self.setEnglishLang(_:)))
-        let frLangItem = UIMenuItem(title: "French", action: #selector(self.setFrenchLang(_:)))
+        let engLangItem = UIMenuItem(title: NSLocalizedString("English", comment: "Language"), action: #selector(self.setEnglishLang(_:)))
+        let frLangItem = UIMenuItem(title: NSLocalizedString("French", comment: "Language"), action: #selector(self.setFrenchLang(_:)))
         menu.menuItems = [engLangItem, frLangItem]
         menu.showMenu(from: langView, rect: langView.frame)
     }
