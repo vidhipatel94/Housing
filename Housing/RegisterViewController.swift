@@ -21,10 +21,21 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var address: UITextField!
     @IBOutlet weak var phone: UITextField!
-
+    
     @IBOutlet weak var done: UIButton!
     
     @IBOutlet weak var error: UILabel!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let user = UserStore.instance.getUser()
+        
+        // if user exists or already created, redirect to dashboard
+        if let _ = user {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let dashboardVC = storyBoard.instantiateViewController(withIdentifier: "dashboard") as! DashboardViewController
+            self.navigationController?.pushViewController(dashboardVC, animated: false)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,7 +110,14 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             return false
         }
         
+        saveUser()
+        
         return true
+    }
+    
+    func saveUser() {
+        let user = User(name: namedata, email: emaildata, phone: phonedata, address: addressdata)
+        UserStore.instance.saveUser(user: user)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

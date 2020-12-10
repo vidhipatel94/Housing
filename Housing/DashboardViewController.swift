@@ -13,6 +13,8 @@ class DashboardViewController: UIViewController {
     
     var cityListings = [CityListing]()
     
+    @IBOutlet weak var welcomeLabel: UILabel!
+    
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var rentButton: UIButton!
@@ -26,6 +28,16 @@ class DashboardViewController: UIViewController {
         
         cityCollectionView.dataSource = self
         
+        changeButtonsUI();
+        
+        if let user = UserStore.instance.getUser() {
+            welcomeLabel.text = welcomeLabel.text! + " " + user.name + "!"
+        }
+        
+        getCitiesWithListing()
+    }
+    
+    private func changeButtonsUI(){
         searchButton.layer.borderColor = UIColor.white.cgColor
         searchButton.layer.borderWidth = 1
         searchButton.layer.cornerRadius = 4
@@ -50,8 +62,6 @@ class DashboardViewController: UIViewController {
         rentButton.contentEdgeInsets.right = 20
         rentButton.contentEdgeInsets.top = 10
         rentButton.contentEdgeInsets.bottom = 10
-        
-        getCitiesWithListing()
     }
     
     private func getCitiesWithListing() {
