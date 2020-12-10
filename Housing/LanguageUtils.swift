@@ -31,3 +31,19 @@ extension Bundle {
                                  .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
 }
+
+class LanguageStore {
+    static let instance = LanguageStore() //Singleton
+    
+    private init() {
+        
+    }
+    
+    func saveLanguage(lang: String) {
+        UserDefaults.standard.set(lang, forKey: "language")
+    }
+    
+    func getLanguage()->String! {
+        return UserDefaults.standard.string(forKey: "language")
+    }
+}

@@ -16,6 +16,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     var phonedata:String!
     var addressdata:String!
     
+    var currentLang:String!
     
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var email: UITextField!
@@ -25,6 +26,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var done: UIButton!
     
     @IBOutlet weak var error: UILabel!
+    
+    @IBOutlet weak var languageButton: UIBarButtonItem!
+    
     
     override func viewWillAppear(_ animated: Bool) {
         let user = UserStore.instance.getUser()
@@ -53,6 +57,19 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         email.delegate = self
         address.delegate = self
         phone.delegate = self
+        
+        currentLang = LanguageStore.instance.getLanguage()
+        if currentLang == nil {
+            currentLang = Locale.current.languageCode
+            if currentLang != nil, currentLang == "fr" {
+                currentLang = "fr-CA"
+            }
+        }
+        if let l = currentLang, l == "fr-CA" {
+            languageButton.title = "English"
+        } else {
+            languageButton.title = "French"
+        }
     }
     
     @IBAction func onTapMade(_ sender: Any) {
@@ -123,5 +140,24 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    @IBAction func languageClicked(_ sender: Any) {
+        if let l = currentLang, l == "fr-CA" {
+            changeLanguage(lang: "en")
+        } else {
+            changeLanguage(lang: "fr-CA")
+        }
+    }
+    
+    func changeLanguage(lang: String) {
+        currentLang = lang
+        
+        LanguageStore.instance.saveLanguage(lang: lang)
+        
+        Bundle.setLanguage(lang)
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = storyboard.instantiateInitialViewController()
     }
 }

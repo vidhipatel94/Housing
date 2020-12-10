@@ -137,8 +137,7 @@ class DashboardViewController: UIViewController {
     }
     
     func changeLanguage(lang: String) {
-        UserDefaults.standard.set([lang], forKey: "AppleLanguages")
-        UserDefaults.standard.synchronize()
+        LanguageStore.instance.saveLanguage(lang: lang)
         
         Bundle.setLanguage(lang)
         

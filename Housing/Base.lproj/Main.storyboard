@@ -186,12 +186,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Get Started" id="R5f-vj-Skn"/>
+                    <navigationItem key="navigationItem" title="Get Started" id="R5f-vj-Skn">
+                        <barButtonItem key="rightBarButtonItem" title="Language" id="P0q-6X-cJ3">
+                            <connections>
+                                <action selector="languageClicked:" destination="BYZ-38-t0r" id="3ZF-AR-Eg0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="address" destination="cg5-s5-Ac9" id="KyP-2I-G1O"/>
                         <outlet property="done" destination="SWY-KE-PvR" id="cGn-0e-gbx"/>
                         <outlet property="email" destination="xpB-S6-emB" id="6MI-rf-jZQ"/>
                         <outlet property="error" destination="PFQ-O1-b6U" id="dLC-cA-Rjp"/>
+                        <outlet property="languageButton" destination="P0q-6X-cJ3" id="dpf-bA-m3D"/>
                         <outlet property="name" destination="uoi-WA-Ay1" id="GAa-Mz-BGt"/>
                         <outlet property="phone" destination="Nc1-15-gNi" id="oKh-kH-pNm"/>
                     </connections>
