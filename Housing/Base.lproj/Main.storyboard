@@ -222,6 +222,36 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="86A-gR-SaB">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
                                                 <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3i-Tt-6u3">
+                                                        <rect key="frame" x="264" y="8" width="48" height="30"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="globe" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="kig-mE-hSM">
+                                                                <rect key="frame" x="6" y="4" width="24" height="22.5"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="24" id="Wf1-HR-rGX"/>
+                                                                    <constraint firstAttribute="width" constant="24" id="XgK-ui-LMY"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowtriangle.down.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iae-jn-9L1">
+                                                                <rect key="frame" x="32" y="12" width="12" height="8"/>
+                                                                <color key="tintColor" white="1" alpha="0.80281464041095896" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="12" id="O1R-FY-SgK"/>
+                                                                    <constraint firstAttribute="height" constant="12" id="pPf-C8-036"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="iae-jn-9L1" firstAttribute="top" secondItem="e3i-Tt-6u3" secondAttribute="top" constant="10" id="0DA-yd-HAY"/>
+                                                            <constraint firstItem="kig-mE-hSM" firstAttribute="trailing" secondItem="iae-jn-9L1" secondAttribute="leading" constant="-2" id="IMI-Fe-En2"/>
+                                                            <constraint firstAttribute="height" constant="30" id="P2j-nF-9HB"/>
+                                                            <constraint firstAttribute="width" constant="48" id="XUg-3L-RhP"/>
+                                                            <constraint firstItem="kig-mE-hSM" firstAttribute="centerY" secondItem="e3i-Tt-6u3" secondAttribute="centerY" id="mrA-Uh-wZi"/>
+                                                            <constraint firstItem="iae-jn-9L1" firstAttribute="trailing" secondItem="e3i-Tt-6u3" secondAttribute="trailing" constant="-4" id="n8S-OY-z8K"/>
+                                                        </constraints>
+                                                    </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dln-5N-mD1">
                                                         <rect key="frame" x="24" y="40" width="272" height="31.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
@@ -275,6 +305,8 @@
                                                     <constraint firstItem="mEj-7Y-dBd" firstAttribute="centerX" secondItem="86A-gR-SaB" secondAttribute="centerX" id="Yiv-9P-J8R"/>
                                                     <constraint firstItem="mEj-7Y-dBd" firstAttribute="top" secondItem="gpi-RU-O01" secondAttribute="bottom" constant="40" id="bXw-fH-AAI"/>
                                                     <constraint firstItem="gpi-RU-O01" firstAttribute="leading" secondItem="86A-gR-SaB" secondAttribute="leading" constant="24" id="cDN-be-NY4"/>
+                                                    <constraint firstItem="e3i-Tt-6u3" firstAttribute="top" secondItem="86A-gR-SaB" secondAttribute="top" constant="8" id="je4-LH-clM"/>
+                                                    <constraint firstAttribute="trailing" secondItem="e3i-Tt-6u3" secondAttribute="trailing" constant="8" id="xq8-sE-5E7"/>
                                                     <constraint firstItem="gpi-RU-O01" firstAttribute="top" secondItem="dln-5N-mD1" secondAttribute="bottom" constant="8" id="yfQ-ic-WtM"/>
                                                 </constraints>
                                             </view>
@@ -437,6 +469,7 @@
                     <connections>
                         <outlet property="buyButton" destination="skv-ps-ns3" id="bcO-mD-hE7"/>
                         <outlet property="cityCollectionView" destination="gh2-Rr-8Y1" id="u01-q3-TId"/>
+                        <outlet property="langView" destination="e3i-Tt-6u3" id="pd7-du-ONg"/>
                         <outlet property="rentButton" destination="6Ah-7W-4me" id="xoJ-X2-6sy"/>
                         <outlet property="searchButton" destination="mEj-7Y-dBd" id="RKd-Z1-22N"/>
                         <outlet property="welcomeLabel" destination="dln-5N-mD1" id="T1v-HB-CGt"/>
@@ -1267,6 +1300,7 @@
     <resources>
         <image name="arrowtriangle.down.fill" catalog="system" width="128" height="124"/>
         <image name="circle.fill" catalog="system" width="128" height="121"/>
+        <image name="globe" catalog="system" width="128" height="121"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
     </resources>
 </document>

@@ -15,6 +15,8 @@ class DashboardViewController: UIViewController {
     
     @IBOutlet weak var welcomeLabel: UILabel!
     
+    @IBOutlet weak var langView: UIView!
+    
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var rentButton: UIButton!
@@ -35,6 +37,13 @@ class DashboardViewController: UIViewController {
         }
         
         getCitiesWithListing()
+        
+        langView.layer.borderColor = UIColor.white.cgColor
+        langView.layer.borderWidth = 0.5
+        langView.layer.cornerRadius = 2
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleLangTap(_:)))
+        langView.addGestureRecognizer(tap)
     }
     
     private func changeButtonsUI(){
@@ -110,6 +119,26 @@ class DashboardViewController: UIViewController {
         }
     }
     
+    @objc func handleLangTap(_ sender: UITapGestureRecognizer? = nil) {
+        becomeFirstResponder()
+        let menu = UIMenuController.shared
+        let engLangItem = UIMenuItem(title: "English", action: #selector(self.setEnglishLang(_:)))
+        let frLangItem = UIMenuItem(title: "French", action: #selector(self.setFrenchLang(_:)))
+        menu.menuItems = [engLangItem, frLangItem]
+        menu.showMenu(from: langView, rect: langView.frame)
+    }
+    
+    @objc func setFrenchLang(_ sender: AnyObject) {
+        print("French")
+    }
+    
+    @objc func setEnglishLang(_ sender: AnyObject) {
+        print("English")
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
 }
 
 extension DashboardViewController : UICollectionViewDataSource {
