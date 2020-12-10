@@ -11,6 +11,7 @@
 		F8181D142573DF2A004022F2 /* HouseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8181D132573DF2A004022F2 /* HouseStore.swift */; };
 		F81CAA4D257E0C3100FBEB11 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81CAA4C257E0C3100FBEB11 /* MapViewController.swift */; };
 		F831B4D92582384B00D60A16 /* fr-CA.lproj in Resources */ = {isa = PBXBuildFile; fileRef = F831B4D82582384B00D60A16 /* fr-CA.lproj */; };
+		F831B4DB25823F2600D60A16 /* LanguageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F831B4DA25823F2600D60A16 /* LanguageUtils.swift */; };
 		F85925C4257FEAD700D2470D /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85925C3257FEAD700D2470D /* ImageViewExtension.swift */; };
 		F85ED633257781F60044E0D1 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85ED632257781F60044E0D1 /* Filter.swift */; };
 		F85ED6352577A9E70044E0D1 /* DetailPhotoCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85ED6342577A9E70044E0D1 /* DetailPhotoCellView.swift */; };
@@ -40,6 +41,7 @@
 		F831B4D62582365300D60A16 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/Main.strings"; sourceTree = "<group>"; };
 		F831B4D72582365300D60A16 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		F831B4D82582384B00D60A16 /* fr-CA.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "fr-CA.lproj"; sourceTree = "<group>"; };
+		F831B4DA25823F2600D60A16 /* LanguageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageUtils.swift; sourceTree = "<group>"; };
 		F85925C3257FEAD700D2470D /* ImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
 		F85ED632257781F60044E0D1 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		F85ED6342577A9E70044E0D1 /* DetailPhotoCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPhotoCellView.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				F8A3D39F2580FEA200FA7E4D /* ViewControllerExtension.swift */,
 				F8A548062581F8D3005C45C9 /* User.swift */,
 				F8A548082581F9A0005C45C9 /* UserStore.swift */,
+				F831B4DA25823F2600D60A16 /* LanguageUtils.swift */,
 			);
 			path = Housing;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				F86BFCEB2573975700527AFD /* DashboardViewController.swift in Sources */,
 				F86BFCF12573B01E00527AFD /* ListViewController.swift in Sources */,
 				FF9C56472580AE51001A92A0 /* FilterTableViewCell.swift in Sources */,
+				F831B4DB25823F2600D60A16 /* LanguageUtils.swift in Sources */,
 				F8A548072581F8D3005C45C9 /* User.swift in Sources */,
 				F8A3D3A02580FEA200FA7E4D /* ViewControllerExtension.swift in Sources */,
 				F8181D142573DF2A004022F2 /* HouseStore.swift in Sources */,

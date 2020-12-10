@@ -129,11 +129,21 @@ class DashboardViewController: UIViewController {
     }
     
     @objc func setFrenchLang(_ sender: AnyObject) {
-        print("French")
+        changeLanguage(lang: "fr-CA")
     }
     
     @objc func setEnglishLang(_ sender: AnyObject) {
-        print("English")
+        changeLanguage(lang: "en")
+    }
+    
+    func changeLanguage(lang: String) {
+        UserDefaults.standard.set([lang], forKey: "AppleLanguages")
+        UserDefaults.standard.synchronize()
+        
+        Bundle.setLanguage(lang)
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = storyboard.instantiateInitialViewController()
     }
     
     override var canBecomeFirstResponder: Bool {
