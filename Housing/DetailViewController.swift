@@ -34,18 +34,17 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if house == nil {
+            showAlert("Sorry, house information not found!")
+            return
+        }
+        
         photosCollectionView.dataSource = self
         photosCollectionView.delegate = self
         
-        HouseStore.instance.getHouses { (houses)-> Void in
-            self.house = houses[0]
-            self.photosCollectionView.reloadData()
-            
-            self.loadBigImage(imageUrl: self.house.photos[0])
-            
-            self.loadData();
-        }
-        
+        loadBigImage(imageUrl: self.house.photos[0])
+        photosCollectionView.reloadData()
+        loadData();
     }
     
     func loadData() {

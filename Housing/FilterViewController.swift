@@ -30,7 +30,7 @@ class FilterViewController: UIViewController {
     
     //MARK:- Variables
     var filter = Filter()
-    var cityArray = ["Toronto","Missisauga","Scarbrough","Brampton","Waterloo","Downtown Kitchener"]
+    var cityArray = ["Toronto","Missisauga","Scarbrough","Brampton","Waterloo","Kitchener"]
     var propertyArray = ["Villa","Basement","Bungalow","Condos","Apartment"]
     var houseArray = [House]()
     
