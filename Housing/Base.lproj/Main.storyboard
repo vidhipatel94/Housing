@@ -896,11 +896,8 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GHX-L5-l4e">
-                                <rect key="frame" x="20" y="489" width="280" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="fu7-fc-UeY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <rect key="frame" x="136" y="489" width="48" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                 <state key="normal" title="Apply">
                                     <color key="titleColor" red="0.27651780840000001" green="0.56384301189999997" blue="0.4818793535" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -915,10 +912,9 @@
                             <constraint firstItem="nU0-pv-biv" firstAttribute="leading" secondItem="fc2-Ws-SsM" secondAttribute="leading" constant="20" id="Cxd-22-wXt"/>
                             <constraint firstItem="MST-EW-Ho2" firstAttribute="leading" secondItem="fc2-Ws-SsM" secondAttribute="leading" constant="20" id="FH6-AE-LKO"/>
                             <constraint firstItem="fc2-Ws-SsM" firstAttribute="trailing" secondItem="nU0-pv-biv" secondAttribute="trailing" constant="20" id="GVO-jb-aw5"/>
-                            <constraint firstItem="GHX-L5-l4e" firstAttribute="leading" secondItem="fc2-Ws-SsM" secondAttribute="leading" constant="20" id="Jkg-hc-WRH"/>
-                            <constraint firstItem="fc2-Ws-SsM" firstAttribute="trailing" secondItem="GHX-L5-l4e" secondAttribute="trailing" constant="20" id="KDV-ee-yOv"/>
                             <constraint firstItem="fc2-Ws-SsM" firstAttribute="trailing" secondItem="wrO-Ke-QIB" secondAttribute="trailing" constant="20" id="Psb-3v-Z59"/>
                             <constraint firstItem="nU0-pv-biv" firstAttribute="top" secondItem="MST-EW-Ho2" secondAttribute="bottom" id="Qec-OZ-hEj"/>
+                            <constraint firstItem="GHX-L5-l4e" firstAttribute="centerX" secondItem="9cC-ZV-aiG" secondAttribute="centerX" id="Rub-sR-okw"/>
                             <constraint firstItem="fc2-Ws-SsM" firstAttribute="trailing" secondItem="UAY-aS-QTy" secondAttribute="trailing" constant="20" id="Z95-eM-A7a"/>
                             <constraint firstItem="GHX-L5-l4e" firstAttribute="top" secondItem="wrO-Ke-QIB" secondAttribute="bottom" constant="20" id="fRM-vI-YnA"/>
                             <constraint firstItem="UAY-aS-QTy" firstAttribute="top" secondItem="nU0-pv-biv" secondAttribute="bottom" constant="10" id="pf0-tM-lVT"/>

@@ -47,7 +47,6 @@ class FilterViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(FilterViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
-        self.title = "Filter"
         self.setButtonUI(false, false, true)
         self.setUI(view_Rent)
         self.setUI(view_Buy)
@@ -70,6 +69,17 @@ class FilterViewController: UIViewController {
         view.layer.cornerRadius = 8.0
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.lightGray.cgColor
+    }
+    
+    func setUI(_ btn:UIButton) {
+        let greenColor = UIColor(red: 0.42, green: 0.73, blue: 0.6, alpha: 1).cgColor
+        btn.layer.borderColor = greenColor
+        btn.layer.borderWidth = 1
+        btn.layer.cornerRadius = 4
+        btn.contentEdgeInsets.left = 20
+        btn.contentEdgeInsets.right = 20
+        btn.contentEdgeInsets.top = 10
+        btn.contentEdgeInsets.bottom = 10
     }
     
     func setButtonUI(_ isRentSelected:Bool,_ isBuySelected:Bool,_ noneSelected:Bool) {
@@ -166,7 +176,7 @@ class FilterViewController: UIViewController {
     func checkValidation() {
         if selectedType == "0" {
             //Show Alert select Type
-            showAlert("Please select type")
+            showAlert("Please select search type")
         } else if lbl_City.text == "Select" {
             //Show Alert select City
             showAlert("Please select city")
