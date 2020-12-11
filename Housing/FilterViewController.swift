@@ -35,7 +35,7 @@ class FilterViewController: UIViewController {
     var houseArray = [House]()
     
     var toolBar = UIToolbar() //picker toolbar
-    var selectedType="0"
+    var selectedType="0" // search type
     var cityPickerView=UIPickerView()
     var propertyPickerView=UIPickerView()
     
@@ -61,18 +61,40 @@ class FilterViewController: UIViewController {
         view.addGestureRecognizer(tap)
         
         // set UI
-        self.setButtonUI(false, false, true)
+        if filter.onRent, filter.onBuy {
+            self.setButtonUI(false, false, true)
+        } else {
+            self.setButtonUI(filter.onRent, filter.onBuy, !filter.onRent && !filter.onBuy)
+        }
         self.setUI(view_Rent)
         self.setUI(view_Buy)
         self.setUI(view_City)
         self.setUI(view_PropertyType)
         self.setUI(btn_Apply)
+        
+        if let min = filter.minPrice, min > 0 {
+            txtField_Min.text = String(min)
+        }
+        if let max = filter.maxPrice, max > 0 {
+            txtField_Max.text = String(max)
+        }
     }
     
     //MARK:- get data and set in array
     private func getCities() {
         HouseStore.instance.getCities { (cities) -> Void in
             self.cityArray = cities
+            
+            for city in cities {
+                // set previously selected index and set label
+                if let id = self.filter.cityId, city.id == id {
+                    self.prevSelectedCityIndex = self.cityArray.firstIndex(of: city) ?? -1
+                    if self.prevSelectedCityIndex >= 0 {
+                        self.lbl_City.text = self.cityArray[self.prevSelectedCityIndex].name // change label
+                        self.selectedCityId = Int(self.cityArray[self.prevSelectedCityIndex].id) // update variable value
+                    }
+                }
+            }
         }
     }
     
@@ -83,6 +105,16 @@ class FilterViewController: UIViewController {
             for house in houses {
                 if let type = house.type, !self.propertyArray.contains(type) {
                     self.propertyArray.append(type)
+                    
+                    // set previously selected index
+                    if let ft = self.filter.type, type == ft {
+                        self.prevSelectedPropertyTypeIndex = self.propertyArray.count - 1
+                        
+                        if self.prevSelectedPropertyTypeIndex >= 0 {
+                            // update label
+                            self.lbl_PropertyType.text = self.propertyArray[self.prevSelectedPropertyTypeIndex]
+                        }
+                    }
                 }
             }
         }
@@ -237,7 +269,7 @@ class FilterViewController: UIViewController {
         } else if txtField_Max.text!.isEmpty {
             //Show Alert Add maximum value
             showAlert(NSLocalizedString("Please select maximum value", comment: "Error"))
-        } else if Int(txtField_Min.text!)! > Int(txtField_Max.text!)! {
+        } else if Double(txtField_Min.text!)! > Double(txtField_Max.text!)! {
             //Show Alert Minimum value should be less
             showAlert(NSLocalizedString("Maximum value should be greater than minimum value", comment: "Error"))
         } else {
