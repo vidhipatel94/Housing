@@ -41,6 +41,10 @@ class FilterViewController: UIViewController {
     
     var selectedCityId = 0
     
+    // previously selected indexes from picker view
+    var prevSelectedCityIndex = -1
+    var prevSelectedPropertyTypeIndex = -1
+    
     //MARK:- View Did Load, Get Data, change UI
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -163,7 +167,11 @@ class FilterViewController: UIViewController {
             cityPickerView.setValue(UIColor.black, forKey: "textColor")
             cityPickerView.autoresizingMask = .flexibleWidth
             cityPickerView.contentMode = .center
+            if prevSelectedCityIndex > 0 {
+                cityPickerView.selectRow(prevSelectedCityIndex, inComponent: 0, animated: true)
+            }
             cityPickerView.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+            
             self.view.addSubview(cityPickerView)
             toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
             toolBar.items = [UIBarButtonItem.init(title: NSLocalizedString("Done", comment: "Button"), style: .done, target: self, action: #selector(onDoneCityButtonTapped))]
@@ -181,6 +189,9 @@ class FilterViewController: UIViewController {
             propertyPickerView.autoresizingMask = .flexibleWidth
             propertyPickerView.contentMode = .center
             propertyPickerView.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+            if prevSelectedPropertyTypeIndex > 0 {
+                propertyPickerView.selectRow(prevSelectedPropertyTypeIndex, inComponent: 0, animated: true)
+            }
             self.view.addSubview(propertyPickerView)
             
             toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
@@ -296,8 +307,10 @@ extension FilterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         if pickerView == cityPickerView {
             self.lbl_City.text = cityArray[row].name // change label
             self.selectedCityId = Int(cityArray[row].id) // update variable value
+            prevSelectedCityIndex = row
         } else {
             self.lbl_PropertyType.text = propertyArray[row] // update variable value
+            prevSelectedPropertyTypeIndex = row
         }
     }
 }
