@@ -11,18 +11,21 @@ import UIKit
 
 class ListViewController: UIViewController {
     
-    var filter = Filter()
-    var houses = [House]()
-    var cities = [City]()
+    var filter = Filter() // applied filter
+    var houses = [House]() // list of houses loaded in table view
+    var cities = [City]() // used to show city name in table cell
     
     @IBOutlet weak var tableView: UITableView!
     
-    private var refreshRequired = true;
+    private var refreshRequired = true; // if filter applied
     
+    //MARK:- Get cities. If returned from filter screen, refresh house list
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if refreshRequired {
+        if cities.count == 0 {
             getCities()
+        }
+        if refreshRequired {
             getFilteredHouses()
         }
     }
@@ -42,11 +45,7 @@ class ListViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
+    // returns city name corresponds to id
     func getCityName(id:Int)->String! {
         if cities.count > 0 {
             let filteredCities = cities.filter { ( $0.id == id ) }
@@ -57,9 +56,11 @@ class ListViewController: UIViewController {
         return nil
     }
     
+    //MARK:- Set values to next view controller before opening
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "DetailSegue"?:
+            // get selected house and open detail screen
             if let row = tableView.indexPathForSelectedRow?.row {
                 let house = houses[row]
                 let detailVC = segue.destination as! DetailViewController
@@ -68,6 +69,7 @@ class ListViewController: UIViewController {
                 refreshRequired = false
             }
         case "FilterSegue"?:
+            // open filter screen
             let filterVC = segue.destination as! FilterViewController
             filterVC.filter = filter
             refreshRequired = true
@@ -77,17 +79,21 @@ class ListViewController: UIViewController {
         }
     }
     
+    // reload data on back from previous screen
     @IBAction func unwindToVC1(segue:UIStoryboardSegue) {
         self.tableView.reloadData()
     }
 }
 
+//MARK:- For house list
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
+    // Total houses in list
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.houses.count
     }
     
+    // Get resuable cell and set values
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FilterTableViewCell") as! FilterTableViewCell
         cell.selectionStyle = .none
@@ -96,7 +102,6 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.lbl_City.text = self.getCityName(id: Int(details.cityId))
         cell.lbl_Price.text = "$ \(details.price)"
         cell.lbl_Type.text = details.type
-        print(details.photos[0])
         cell.imgView_Image?.loadUrl(url: details.photos[0] as String, spinner: cell.loader)
         return cell
     }

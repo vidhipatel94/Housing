@@ -2,12 +2,13 @@
 //  FilterTableViewCell.swift
 //  Housing
 //
-//  Created by Aman Gupta on 08/12/20.
+//  Created by Simranjit Singh on 08/12/20.
 //  Copyright © 2020 Conestoga. All rights reserved.
 //
 
 import UIKit
 
+// List- House cell
 class FilterTableViewCell: UITableViewCell {
 
     @IBOutlet weak var loader: UIActivityIndicatorView!

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// Detail screen - photo cell
 class DetailPhotoCellView: UICollectionViewCell {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var spinnerView: UIActivityIndicatorView!

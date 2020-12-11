@@ -32,9 +32,11 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     
+    //MARK:- load data on view loaded
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // if house nil, show error
         if house == nil {
             showAlert(NSLocalizedString("Sorry, house information not found!", comment: "Error"))
             return
@@ -43,7 +45,8 @@ class DetailViewController: UIViewController {
         photosCollectionView.dataSource = self
         photosCollectionView.delegate = self
         
-        loadBigImage(imageUrl: self.house.photos[0] as String)
+        // load data into view
+        loadBigImage(imageUrl: self.house.photos[0] as String)// show first photo in list
         photosCollectionView.reloadData()
         loadData();
     }
@@ -57,25 +60,29 @@ class DetailViewController: UIViewController {
         typeLabel.text = house.type
         sizeLabel.text = house.size
         
+        // add amenities in stack view by adding label at run-time
         for amenity in house.amenities {
             let label = UILabel()
-            label.text = "\u{2022} \(amenity)"
+            label.text = "\u{2022} \(amenity)" // with bullet point
             label.textColor = typeLabel.textColor
             label.font = typeLabel.font
             amenitiesStackView.addArrangedSubview(label)
         }
         
+        // set location in map preview
         let location = CLLocation(latitude: house.latitude, longitude: house.longitude)
         let regionRadius = 1000
         let region = MKCoordinateRegion(center: location.coordinate,latitudinalMeters: CLLocationDistance(regionRadius), longitudinalMeters: CLLocationDistance(regionRadius))
         mapView.setRegion(region, animated: false)
         
+        // add annotation for house in map preview
         let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2D(latitude: house.latitude, longitude: house.longitude)
         annotation.title = house.title
         mapView.addAnnotation(annotation)
     }
     
+    //MARK:- on click contact, open alert to give option to send SMS to owner
     @IBAction func onClickContact(_ sender: Any) {
         if let _ = house, let contactNo = house.contactNo {
             let title = NSLocalizedString("Contact Owner", comment: "Title");
@@ -88,6 +95,7 @@ class DetailViewController: UIViewController {
             let cancelAction = UIAlertAction(title: actionCancelStr, style: .cancel, handler: nil)
             alert.addAction(cancelAction)
             
+            // on click SMS, open device default messaging app with predefined message
             let smsAction = UIAlertAction(title: actionSMSStr, style: .default, handler: {
                 (action) -> Void in
                 let sms: String = "sms:\(contactNo)&body=\(smsMessage)"
@@ -100,10 +108,12 @@ class DetailViewController: UIViewController {
         }
     }
     
+    // show big image
     private func loadBigImage(imageUrl: String){
         bigImageView.loadUrl(url: imageUrl, spinner: bigImageSpinner)
     }
     
+    //MARK:- on click map, open map screen and pass data
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "MapSegue"?:
@@ -117,21 +127,25 @@ class DetailViewController: UIViewController {
     }
 }
 
+//MARK:- Collection view for photos
 extension DetailViewController : UICollectionViewDataSource {
+    
+    // total photos
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let _ = house {
-            print(house.photos.count)
             return house.photos.count
         }
         return 0
     }
     
+    // return reusable cell by loading image
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellView = photosCollectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! DetailPhotoCellView
         cellView.imageView.loadUrl(url: house.photos[indexPath.row] as String, spinner: cellView.spinnerView)
         return cellView
     }
     
+    // on click photo from collection view, load that photo in big imageview
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = indexPath.row;
         if index < house.photos.count {

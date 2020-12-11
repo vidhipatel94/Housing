@@ -11,6 +11,7 @@ import UIKit
 
 extension UIImageView {
     
+    // This loads image from internet and after succes of fail, it stops spinner
     func loadUrl(url:String, spinner: UIActivityIndicatorView?){
         guard let imgURL = URL(string: url) else { return }
         

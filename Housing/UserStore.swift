@@ -24,7 +24,7 @@ class UserStore {
             // Encode User
             let data = try encoder.encode(user)
 
-            // Write/Set Data
+            // Write/Set User
             UserDefaults.standard.set(data, forKey: "user")
 
         } catch {

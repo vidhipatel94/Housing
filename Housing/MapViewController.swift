@@ -11,12 +11,14 @@ import MapKit
 
 class MapViewController: UIViewController {
     
+    // these are passed from detail screen
     public var latitude: Double = 0
     var longitude: Double = 0
     var houseTitle: String = ""
     
     @IBOutlet weak var mapView: MKMapView!
     
+    //MARK:- show location in map
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,7 +45,11 @@ class MapViewController: UIViewController {
         mapView.setRegion(region, animated: true)
     }
     
+    //MARK:- this returns menu items for context menu
     private func getMenuActions()->[UIAction] {
+        
+        // disable "Standard Map" if that is already loaded
+        
         var actionStandard : UIAction;
         if self.mapView.mapType == .standard {
             actionStandard = UIAction(
@@ -61,6 +67,9 @@ class MapViewController: UIViewController {
                     self.mapView.mapType = .standard
             }
         }
+        
+        
+        // disable "Satellite Map" if that is already loaded
         
         var actionSatellite : UIAction
         if self.mapView.mapType == .satellite {
@@ -80,6 +89,7 @@ class MapViewController: UIViewController {
             }
         }
         
+        // reload house location in map
         let actionReload = UIAction(
             title: NSLocalizedString("Refresh Location", comment: "Menu"),
             image: nil,
@@ -87,6 +97,7 @@ class MapViewController: UIViewController {
                 self.setMapRegion()
         }
         
+        // close menu
         let actionClose = UIAction(
             title: NSLocalizedString("Close", comment: "Button"),
             image: nil,
@@ -99,6 +110,7 @@ class MapViewController: UIViewController {
     
 }
 
+//MARK:- To prepare context menu while loading. The menu shows on long press/tap on screen
 extension MapViewController : UIContextMenuInteractionDelegate {
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
         return UIContextMenuConfiguration(

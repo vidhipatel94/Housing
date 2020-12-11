@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// Dashboard - city cell
 class CityCellView : UICollectionViewCell {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var spinnerView: UIActivityIndicatorView!

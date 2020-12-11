@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Get started - to save user
 struct User : Codable {
     var name:String
     var email:String

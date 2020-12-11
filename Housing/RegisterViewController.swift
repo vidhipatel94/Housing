@@ -11,6 +11,7 @@ import UIKit
 
 class RegisterViewController: UIViewController, UITextFieldDelegate {
     
+    // user entered data
     var namedata:String!
     var emaildata:String!
     var phonedata:String!
@@ -29,8 +30,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var languageButton: UIBarButtonItem!
     
-    
+    //MARK:- change user is created or not
     override func viewWillAppear(_ animated: Bool) {
+        
+        // get user from UserDefaults database
         let user = UserStore.instance.getUser()
         
         // if user exists or already created, redirect to dashboard
@@ -41,9 +44,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //MARK:- initalize all
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // change done button UI
         let greenColor = UIColor(red: 0.42, green: 0.73, blue: 0.6, alpha: 1).cgColor
         done.layer.borderColor = greenColor
         done.layer.borderWidth = 1
@@ -53,11 +58,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         done.contentEdgeInsets.top = 10
         done.contentEdgeInsets.bottom = 10
         
+        // UITextFieldDelegate
         name.delegate = self
         email.delegate = self
         address.delegate = self
         phone.delegate = self
         
+        // get current language and change nav bar button title
         currentLang = LanguageStore.instance.getLanguage()
         if currentLang == nil {
             currentLang = Locale.current.languageCode
@@ -65,6 +72,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 currentLang = "fr-CA"
             }
         }
+        // if current lang is french, display option english and vice-a-versa
         if let l = currentLang, l == "fr-CA" {
             languageButton.title = "English"
         } else {
@@ -72,10 +80,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //MARK:- on tap outside, close keyboard
     @IBAction func onTapMade(_ sender: Any) {
         view.endEditing(true)
     }
     
+    //MARK:- validate and save data before going on next screen
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         
         if(!validateAndSaveData()){
@@ -86,8 +96,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     func validateAndSaveData() -> Bool {
         
+        // close keyboard
         view.endEditing(true)
         
+        // get data from text fields
         namedata = name.text
         emaildata = email.text
         phonedata = phone.text
@@ -115,6 +127,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             return false
         }
         let phoneRegEx = "^\\d{3}[\\- ]?\\d{3}[\\- ]?\\d{4}$"
+        // format:- (123-123-1234) or (123 123 1234) or (1231231234)
         let phoneResult = NSPredicate(format: "SELF MATCHES %@", phoneRegEx)
         let phoneValid = phoneResult.evaluate(with: phonedata)
         if !phoneValid {
@@ -133,16 +146,20 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     func saveUser() {
+        // saave into user defaults database
         let user = User(name: namedata, email: emaildata, phone: phonedata, address: addressdata)
         UserStore.instance.saveUser(user: user)
     }
     
+    //MARK:- on click return button of keyboard, close keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
+    //MARK:- change language
     @IBAction func languageClicked(_ sender: Any) {
+        // flip language between english and french-canada
         if let l = currentLang, l == "fr-CA" {
             changeLanguage(lang: "en")
         } else {
@@ -153,10 +170,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     func changeLanguage(lang: String) {
         currentLang = lang
         
+        // save to database
         LanguageStore.instance.saveLanguage(lang: lang)
         
+        // change lang using bundle
         Bundle.setLanguage(lang)
         
+        // reload storyboard
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = storyboard.instantiateInitialViewController()
     }

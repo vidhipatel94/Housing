@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F8181D122573B91F004022F2 /* House.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8181D112573B91F004022F2 /* House.swift */; };
 		F8181D142573DF2A004022F2 /* HouseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8181D132573DF2A004022F2 /* HouseStore.swift */; };
 		F8182FB4258399F100133A21 /* House+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8182FB0258399F100133A21 /* House+CoreDataClass.swift */; };
 		F8182FB5258399F100133A21 /* House+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8182FB1258399F100133A21 /* House+CoreDataProperties.swift */; };
@@ -41,7 +40,6 @@
 
 /* Begin PBXFileReference section */
 		F80270A025821A260062A136 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		F8181D112573B91F004022F2 /* House.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House.swift; sourceTree = "<group>"; };
 		F8181D132573DF2A004022F2 /* HouseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseStore.swift; sourceTree = "<group>"; };
 		F8182FB0258399F100133A21 /* House+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "House+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F8182FB1258399F100133A21 /* House+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "House+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 				F86BFCEE2573AFDE00527AFD /* FilterViewController.swift */,
 				F86BFCF02573B01E00527AFD /* ListViewController.swift */,
 				F86BFCF22573B05400527AFD /* DetailViewController.swift */,
-				F8181D112573B91F004022F2 /* House.swift */,
 				F8181D132573DF2A004022F2 /* HouseStore.swift */,
 				F85ED632257781F60044E0D1 /* Filter.swift */,
 				F85ED6342577A9E70044E0D1 /* DetailPhotoCellView.swift */,
@@ -238,7 +235,6 @@
 				F8C6D8A02571837700F725B2 /* AppDelegate.swift in Sources */,
 				F85925C4257FEAD700D2470D /* ImageViewExtension.swift in Sources */,
 				F81CAA4D257E0C3100FBEB11 /* MapViewController.swift in Sources */,
-				F8181D122573B91F004022F2 /* House.swift in Sources */,
 				F8C6D8A22571837700F725B2 /* SceneDelegate.swift in Sources */,
 				F86BFCEB2573975700527AFD /* DashboardViewController.swift in Sources */,
 				F86BFCF12573B01E00527AFD /* ListViewController.swift in Sources */,

@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Json service response format - object
 class GetServerDataResponse {
     var cities: [City]!
     var houses: [House]!

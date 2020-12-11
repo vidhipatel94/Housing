@@ -34,25 +34,29 @@ class FilterViewController: UIViewController {
     var propertyArray = [String]()
     var houseArray = [House]()
     
-    var toolBar = UIToolbar()
+    var toolBar = UIToolbar() //picker toolbar
     var selectedType="0"
     var cityPickerView=UIPickerView()
     var propertyPickerView=UIPickerView()
     
     var selectedCityId = 0
     
-    //MARK:- View Did Load
+    //MARK:- View Did Load, Get Data, change UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getCities()
         getPropertyTypes()
         
+        // Change apply button UI
         btn_Apply.layer.borderColor = UIColor(red: 71/255, green: 144/255, blue: 123/255, alpha: 1.0).cgColor
         btn_Apply.layer.borderWidth = 1.0
+        
+        // added tap gesture recognizer programmatically to superview
         let tap = UITapGestureRecognizer(target: self, action: #selector(FilterViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
+        // set UI
         self.setButtonUI(false, false, true)
         self.setUI(view_Rent)
         self.setUI(view_Buy)
@@ -61,13 +65,14 @@ class FilterViewController: UIViewController {
         self.setUI(btn_Apply)
     }
     
-    //MARK:- get data
+    //MARK:- get data and set in array
     private func getCities() {
         HouseStore.instance.getCities { (cities) -> Void in
             self.cityArray = cities
         }
     }
     
+    // prepare property type array from house list
     private func getPropertyTypes() {
         HouseStore.instance.getHouses { (houses) -> Void in
             self.propertyArray.removeAll()
@@ -81,20 +86,23 @@ class FilterViewController: UIViewController {
     
     //MARK:- Dismiss keyboard
     @objc func dismissKeyboard() {
+        // unlink the views from superview
         toolBar.removeFromSuperview()
         propertyPickerView.removeFromSuperview()
         cityPickerView.removeFromSuperview()
         
+        // remove editing focus
         view.endEditing(true)
     }
     
-    
+    //MARK:- set UI
     func setUI(_ view:UIView) {
         view.layer.cornerRadius = 8.0
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.lightGray.cgColor
     }
     
+    // change button UI
     func setUI(_ btn:UIButton) {
         let greenColor = UIColor(red: 0.42, green: 0.73, blue: 0.6, alpha: 1).cgColor
         btn.layer.borderColor = greenColor
@@ -109,6 +117,7 @@ class FilterViewController: UIViewController {
     func setButtonUI(_ isRentSelected:Bool,_ isBuySelected:Bool,_ noneSelected:Bool) {
         if noneSelected {
             selectedType = "0"
+            // change images
             imgView_Rent.image = UIImage(named: "Unselected")
             imgView_Buy.image = UIImage(named: "Unselected")
         } else if isBuySelected {
@@ -122,17 +131,18 @@ class FilterViewController: UIViewController {
         }
     }
     
-    //MARK:- View Will Disappear
+    //MARK:- View Will Disappear, Close keyboard
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         view.endEditing(true)
     }
     
+    //MARK:- Handle all clicks
     @IBAction func buttonActions(_ sender: UIButton) {
         switch sender.tag {
         case 100://Buy Button
             view.endEditing(true)
-            toolBar.removeFromSuperview()
+            toolBar.removeFromSuperview() //picker toolbar
             propertyPickerView.removeFromSuperview()
             cityPickerView.removeFromSuperview()
             setButtonUI(false, true, false)
@@ -187,19 +197,22 @@ class FilterViewController: UIViewController {
         }
     }
     
+    // Close picker
     @objc func onDoneCityButtonTapped() {
         toolBar.removeFromSuperview()
         cityPickerView.removeFromSuperview()
     }
     
+    // Close picker
     @objc func onDonePropertyButtonTapped() {
         toolBar.removeFromSuperview()
         propertyPickerView.removeFromSuperview()
     }
     
+    // on click apply
     func checkValidation() {
         if selectedType == "0" {
-            //Show Alert select Type
+            //Show Alert select search Type
             showAlert(NSLocalizedString("Please select search type", comment: "Error"))
         } else if lbl_City.text == NSLocalizedString("Select", comment: "Select") {
             //Show Alert select City
@@ -217,6 +230,7 @@ class FilterViewController: UIViewController {
             //Show Alert Minimum value should be less
             showAlert(NSLocalizedString("Maximum value should be greater than minimum value", comment: "Error"))
         } else {
+            // set filter data
             if selectedType == "1" {
                 filter.onBuy = true
                 filter.onRent = false
@@ -229,6 +243,7 @@ class FilterViewController: UIViewController {
             filter.minPrice = Double(txtField_Min.text!)
             filter.maxPrice = Double(txtField_Max.text!)
             
+            // get filtered houses and check if empty
             HouseStore.instance.getFilteredHouses(filter: filter) { (houses) in
                 if houses.count == 0 {
                     self.showAlert(NSLocalizedString("No result found", comment: "Error"))
@@ -240,6 +255,7 @@ class FilterViewController: UIViewController {
         }
     }
     
+    //MARK:- Set filtered houses in list, on click back
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "unwindToback" {
             let dest = segue.destination as! ListViewController
@@ -248,12 +264,15 @@ class FilterViewController: UIViewController {
     }
 }
 
+//MARK:- For city, property type picker
 extension FilterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
+    // total picker
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
+    // total options
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == cityPickerView {
             return cityArray.count
@@ -263,6 +282,7 @@ extension FilterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         
     }
     
+    // title of options
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == cityPickerView {
             return cityArray[row].name
@@ -271,12 +291,13 @@ extension FilterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         }
     }
     
+    // on option selected
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == cityPickerView {
-            self.lbl_City.text = cityArray[row].name
-            self.selectedCityId = Int(cityArray[row].id)
+            self.lbl_City.text = cityArray[row].name // change label
+            self.selectedCityId = Int(cityArray[row].id) // update variable value
         } else {
-            self.lbl_PropertyType.text = propertyArray[row]
+            self.lbl_PropertyType.text = propertyArray[row] // update variable value
         }
     }
 }

@@ -28,6 +28,7 @@ class HouseStore {
         
     }
     
+    //MARK:- used while doing operations with core data
     private let citiesPersistentContainer: NSPersistentContainer = {
         return getPersistentContainer(model: "City")
     }()
@@ -39,13 +40,13 @@ class HouseStore {
     private static func getPersistentContainer(model:String)-> NSPersistentContainer {
         let container = NSPersistentContainer(name: "Housing")
         
+        // path where sqlite file will be or is stored
         let storeURL = FileManager.default
             .urls(for: .documentDirectory, in: .userDomainMask).first!
             .appendingPathComponent("\(model).sqlite")
-        print(storeURL)
         
         let storeDescription = NSPersistentStoreDescription(url: storeURL)
-        storeDescription.shouldInferMappingModelAutomatically = true
+        storeDescription.shouldInferMappingModelAutomatically = true // to handle mapping data
         container.persistentStoreDescriptions = [storeDescription]
         
         container.loadPersistentStores { (storeDescription, error) in
@@ -56,20 +57,28 @@ class HouseStore {
         return container
     }
     
+    //MARK:- used for calling json service or network call
     private let urlSession : URLSession = {
         return URLSession(configuration: URLSessionConfiguration.default)
     }()
     
     private let urlRequest : URLRequest = {
+        // path given by json-server
         let url = URLComponents(string: "http://localhost:3000/master")!.url
         return URLRequest(url: url!)
     }()
     
+    //MARK:- fetch cities from database
     private func fetchCities()->[City]! {
         let fetchRequest : NSFetchRequest<City> = City.fetchRequest()
+        // order by city.id ascending
         let sortDescriptor = NSSortDescriptor(key: #keyPath(City.id), ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        // used city NSManagedObjectContext
         let context = citiesPersistentContainer.viewContext
+        
+        // perform fetching and get list
         var cities: [City]!
         context.performAndWait {
             do {
@@ -81,18 +90,21 @@ class HouseStore {
         return cities
     }
     
+    //MARK:- if cities exist in database, return the list, otherwise perform network call
     func getCities(completion: @escaping([City])->Void){
+        // fetch cities from database
         var cities = fetchCities() ?? [City]()
         if cities.count > 0 {
             OperationQueue.main.addOperation {
                 completion(cities)
             }
         } else {
-            // get cities and houses from server
+            // get cities and houses from server as both uses same json file
             let task = urlSession.dataTask(with: urlRequest) {
                 (data,response,error)->Void in
                 
                 if let jsonData = data {
+                    // store data in database and get response object
                     let result = self.processServerDataResult(json: jsonData)
                     switch result {
                     case let .Success(serverDataResponse):
@@ -114,6 +126,7 @@ class HouseStore {
         }
     }
     
+    // if any data is inserted, perform save operation
     private func saveContexts(){
         if citiesPersistentContainer.viewContext.hasChanges {
             do {
@@ -131,11 +144,17 @@ class HouseStore {
         }
     }
     
+    //MARK:- fetch houses from database
     private func fetchHouses()->[House]! {
         let fetchRequest : NSFetchRequest<House> = House.fetchRequest()
+        // order by house.id ascending
         let sortDescriptor = NSSortDescriptor(key: #keyPath(House.id), ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        // used house NSManagedObjectContext
         let context = housesPersistentContainer.viewContext
+        
+        // perform fetching and get list
         var houses: [House]!
         context.performAndWait {
             do {
@@ -147,18 +166,21 @@ class HouseStore {
         return houses
     }
     
+    //MARK:- if cities exist in database, return the list, otherwise perform network call
     func getHouses(completion: @escaping([House])->Void){
+        // fetch houses from database
         var houses = fetchHouses() ?? [House]()
         if houses.count > 0 {
             OperationQueue.main.addOperation {
                 completion(houses)
             }
         } else {
-            // get cities and houses from server
+            // get cities and houses from server as both uses same json file
             let task = urlSession.dataTask(with: urlRequest) {
                 (data,response,error)->Void in
                 
                 if let jsonData = data {
+                    // store data in database and get response object
                     let result = self.processServerDataResult(json: jsonData)
                     switch result {
                     case let .Success(serverDataResponse):
@@ -180,6 +202,7 @@ class HouseStore {
         }
     }
     
+    // This prepares GetServerDataResponse object from Json
     private func processServerDataResult(json data: Data)->GetServerDataResult {
         do {
             let jsonObj = try JSONSerialization.jsonObject(with: data, options: [])
@@ -190,6 +213,8 @@ class HouseStore {
                 else {
                     return .Failure(GetServerDataError.InvalidJsonError)
             }
+            
+            // prepare array of cities
             var cities = [City]()
             for cityJson in citiesArr {
                 if let city = getCityObj(cityJson) {
@@ -198,6 +223,8 @@ class HouseStore {
                     return .Failure(GetServerDataError.InvalidJsonError)
                 }
             }
+            
+            // prepare array of houses
             var houses = [House]()
             for houseJson in housesArr {
                 if let house = getHouseObj(houseJson) {
@@ -206,6 +233,8 @@ class HouseStore {
                     return .Failure(GetServerDataError.InvalidJsonError)
                 }
             }
+            
+            // create GetServerDataResponse object
             let responseObj = GetServerDataResponse()
             responseObj.cities = cities
             responseObj.houses = houses
@@ -215,6 +244,7 @@ class HouseStore {
         }
     }
     
+    // This prepares City object from Json, save to database if not exist in db
     private func getCityObj(_ json:[String:Any])->City? {
         guard
             let id = json["id"] as! Int?,
@@ -247,6 +277,7 @@ class HouseStore {
         return city
     }
     
+     // This prepares House object from Json, save to database if not exist in db
     private func getHouseObj(_ json:[String:Any])->House? {
         guard
             let id = json["id"] as! Int?,
@@ -292,6 +323,7 @@ class HouseStore {
         return house
     }
     
+    //MARK:- get houses, apply filter and return filtered list
     func getFilteredHouses(filter: Filter, onComplete: @escaping([House])->Void){
         getHouses { (houses) -> Void in
             var finalHouses = [House]()

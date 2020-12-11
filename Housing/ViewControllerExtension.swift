@@ -11,6 +11,7 @@ import UIKit
 
 extension UIViewController {
     
+    // Util Function to Show Alert
     func showAlert(_ message:String)  {
         let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
         let ok = UIAlertAction(title: NSLocalizedString("OK", comment: "Button"), style: .cancel, handler: nil)
