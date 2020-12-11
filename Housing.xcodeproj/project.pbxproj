@@ -12,6 +12,7 @@
 		F8182FB5258399F100133A21 /* House+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8182FB1258399F100133A21 /* House+CoreDataProperties.swift */; };
 		F8182FB6258399F100133A21 /* City+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8182FB2258399F100133A21 /* City+CoreDataClass.swift */; };
 		F8182FB7258399F100133A21 /* City+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8182FB3258399F100133A21 /* City+CoreDataProperties.swift */; };
+		F8182FBD2583F19D00133A21 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = F8182FBC2583F19D00133A21 /* en.lproj */; };
 		F81CAA4D257E0C3100FBEB11 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81CAA4C257E0C3100FBEB11 /* MapViewController.swift */; };
 		F831B4D92582384B00D60A16 /* fr-CA.lproj in Resources */ = {isa = PBXBuildFile; fileRef = F831B4D82582384B00D60A16 /* fr-CA.lproj */; };
 		F831B4DB25823F2600D60A16 /* LanguageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F831B4DA25823F2600D60A16 /* LanguageUtils.swift */; };
@@ -45,6 +46,7 @@
 		F8182FB1258399F100133A21 /* House+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "House+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F8182FB2258399F100133A21 /* City+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "City+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F8182FB3258399F100133A21 /* City+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "City+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F8182FBC2583F19D00133A21 /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = en.lproj; sourceTree = "<group>"; };
 		F81CAA4C257E0C3100FBEB11 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		F831B4D62582365300D60A16 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/Main.strings"; sourceTree = "<group>"; };
 		F831B4D72582365300D60A16 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				F8182FB1258399F100133A21 /* House+CoreDataProperties.swift */,
 				F8182FB2258399F100133A21 /* City+CoreDataClass.swift */,
 				F8182FB3258399F100133A21 /* City+CoreDataProperties.swift */,
+				F8182FBC2583F19D00133A21 /* en.lproj */,
 				F831B4D82582384B00D60A16 /* fr-CA.lproj */,
 				F8C6D89F2571837700F725B2 /* AppDelegate.swift */,
 				F8C6D8A12571837700F725B2 /* SceneDelegate.swift */,
@@ -210,6 +213,7 @@
 				F8C6D8AF2571837900F725B2 /* LaunchScreen.storyboard in Resources */,
 				F831B4D92582384B00D60A16 /* fr-CA.lproj in Resources */,
 				F8C6D8AC2571837900F725B2 /* Assets.xcassets in Resources */,
+				F8182FBD2583F19D00133A21 /* en.lproj in Resources */,
 				F8C6D8A72571837700F725B2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
