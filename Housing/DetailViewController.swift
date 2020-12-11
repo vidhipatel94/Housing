@@ -13,6 +13,7 @@ import MapKit
 class DetailViewController: UIViewController {
     
     var house: House!
+    var cityName: String!
     
     @IBOutlet weak var photosCollectionView: UICollectionView!
     @IBOutlet weak var bigImageView: UIImageView!
@@ -42,7 +43,7 @@ class DetailViewController: UIViewController {
         photosCollectionView.dataSource = self
         photosCollectionView.delegate = self
         
-        loadBigImage(imageUrl: self.house.photos[0])
+        loadBigImage(imageUrl: self.house.photos[0] as String)
         photosCollectionView.reloadData()
         loadData();
     }
@@ -52,18 +53,16 @@ class DetailViewController: UIViewController {
         rentOrBuyLabel.text = house.onRent ? NSLocalizedString("For Rent", comment: "For Rent") : NSLocalizedString("For Sale", comment: "For Sale")
         titleLabel.text = house.title
         addressLabel.text = house.address
-        cityLabel.text = house.city
+        cityLabel.text = cityName
         typeLabel.text = house.type
         sizeLabel.text = house.size
         
-        if let amenities = house.amenities {
-            for amenity in amenities {
-                let label = UILabel()
-                label.text = "\u{2022} \(amenity)"
-                label.textColor = typeLabel.textColor
-                label.font = typeLabel.font
-                amenitiesStackView.addArrangedSubview(label)
-            }
+        for amenity in house.amenities {
+            let label = UILabel()
+            label.text = "\u{2022} \(amenity)"
+            label.textColor = typeLabel.textColor
+            label.font = typeLabel.font
+            amenitiesStackView.addArrangedSubview(label)
         }
         
         let location = CLLocation(latitude: house.latitude, longitude: house.longitude)
@@ -82,7 +81,7 @@ class DetailViewController: UIViewController {
             let title = NSLocalizedString("Contact Owner", comment: "Title");
             let actionCancelStr = NSLocalizedString("Cancel", comment: "Button");
             let actionSMSStr = NSLocalizedString("Send SMS", comment: "Button");
-            let smsMessage = NSLocalizedString("Hello, I'm from Housing app. I am interested in your house: ", comment: "Message") + house.title;
+            let smsMessage = NSLocalizedString("Hello, I'm from Housing app. I am interested in your house: ", comment: "Message") + house.title!;
             
             let alert = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
             
@@ -111,7 +110,7 @@ class DetailViewController: UIViewController {
             let mapVC = segue.destination as! MapViewController
             mapVC.latitude = house.latitude
             mapVC.longitude = house.longitude
-            mapVC.houseTitle = house.title
+            mapVC.houseTitle = house.title ?? ""
         default:
             print("Segue id not found")
         }
@@ -120,7 +119,7 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let _ = house, let _ = house.photos {
+        if let _ = house {
             print(house.photos.count)
             return house.photos.count
         }
@@ -129,14 +128,14 @@ extension DetailViewController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellView = photosCollectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! DetailPhotoCellView
-        cellView.imageView.loadUrl(url: house.photos[indexPath.row], spinner: cellView.spinnerView)
+        cellView.imageView.loadUrl(url: house.photos[indexPath.row] as String, spinner: cellView.spinnerView)
         return cellView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = indexPath.row;
-        if let photos = house.photos, index < photos.count {
-            loadBigImage(imageUrl: house.photos[index])
+        if index < house.photos.count {
+            loadBigImage(imageUrl: house.photos[index] as String)
         }
     }
 }

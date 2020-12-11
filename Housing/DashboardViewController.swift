@@ -11,7 +11,7 @@ import UIKit
 
 class DashboardViewController: UIViewController {
     
-    var cityListings = [CityListing]()
+    var cities = [City]()
     
     @IBOutlet weak var welcomeLabel: UILabel!
     
@@ -36,7 +36,7 @@ class DashboardViewController: UIViewController {
             welcomeLabel.text = welcomeLabel.text! + " " + user.name + "!"
         }
         
-        getCitiesWithListing()
+        getCities()
         
         langView.layer.borderColor = UIColor.white.cgColor
         langView.layer.borderWidth = 0.5
@@ -73,22 +73,14 @@ class DashboardViewController: UIViewController {
         rentButton.contentEdgeInsets.bottom = 10
     }
     
-    private func getCitiesWithListing() {
-        HouseStore.instance.getHouses { (houses) -> Void in
-            print("Total houses: \(houses.count)")
-            if houses.count > 0 {
-                for house in houses {
-                    if let cityListing = self.cityListings.first(where: { $0.city == house.city }) {
-                        cityListing.noOfHouses += 1
-                    } else {
-                        let imageUrl = house.photos != nil && house.photos.count > 0 ? house.photos[0] : nil
-                        self.cityListings.append(CityListing(city: house.city, noOfHouses: 1, imageUrl: imageUrl))
-                    }
-                }
-            }
+    private func getCities() {
+        HouseStore.instance.getCities { (cities) -> Void in
+            print("Total cities: \(cities.count)")
+            
+            self.cities = cities
             
             // change height of collection view because it is inside scrollview and scoll of collectionview is disabled
-            let heightConstraint = self.cityCollectionView.heightAnchor.constraint(equalToConstant: CGFloat((128+10) * self.cityListings.count/2 + 20))
+            let heightConstraint = self.cityCollectionView.heightAnchor.constraint(equalToConstant: CGFloat((128+10) * self.cities.count/2 + 20))
             heightConstraint.isActive = true
             self.cityCollectionView.layoutIfNeeded()
             
@@ -112,7 +104,7 @@ class DashboardViewController: UIViewController {
             if let selectedIndexPath = cityCollectionView.indexPathsForSelectedItems?.first {
                 let listVC = segue.destination as! ListViewController
                 listVC.filter = Filter()
-                listVC.filter.city = cityListings[selectedIndexPath.row].city
+                listVC.filter.cityId = Int(cities[selectedIndexPath.row].id)
             }
         default:
             print("Unexpected segue identifier")
@@ -152,26 +144,16 @@ class DashboardViewController: UIViewController {
 
 extension DashboardViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cityListings.count
+        return cities.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellView = cityCollectionView.dequeueReusableCell(withReuseIdentifier: "CityCell", for: indexPath) as! CityCellView
-        let cityListing = cityListings[indexPath.row]
-        cellView.titleView.text = cityListing.city
-        cellView.imageView.loadUrl(url: cityListing.imageUrl, spinner: cellView.spinnerView)
+        let city = cities[indexPath.row]
+        cellView.titleView.text = city.name
+        if let imageUrl = city.photo {
+            cellView.imageView.loadUrl(url: imageUrl, spinner: cellView.spinnerView)
+        }
         return cellView;
-    }
-}
-
-class CityListing {
-    let city: String
-    var noOfHouses: Int
-    let imageUrl: String!
-    
-    init(city: String, noOfHouses: Int, imageUrl: String!){
-        self.city = city
-        self.noOfHouses = noOfHouses
-        self.imageUrl = imageUrl
     }
 }

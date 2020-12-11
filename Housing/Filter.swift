@@ -11,7 +11,7 @@ import Foundation
 class Filter {
     var onBuy: Bool
     var onRent: Bool
-    var city: String!
+    var cityId: Int!
     var type: String!
     var minPrice: Double!
     var maxPrice: Double!

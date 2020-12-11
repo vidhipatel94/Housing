@@ -30,8 +30,8 @@ class FilterViewController: UIViewController {
     
     //MARK:- Variables
     var filter = Filter()
-    var cityArray = ["Toronto","Missisauga","Scarbrough","Brampton","Waterloo","Kitchener"]
-    var propertyArray = ["Villa","Basement","Bungalow","Condos","Apartment"]
+    var cityArray = [City]()
+    var propertyArray = [String]()
     var houseArray = [House]()
     
     var toolBar = UIToolbar()
@@ -39,9 +39,15 @@ class FilterViewController: UIViewController {
     var cityPickerView=UIPickerView()
     var propertyPickerView=UIPickerView()
     
+    var selectedCityId = 0
+    
     //MARK:- View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getCities()
+        getPropertyTypes()
+        
         btn_Apply.layer.borderColor = UIColor(red: 71/255, green: 144/255, blue: 123/255, alpha: 1.0).cgColor
         btn_Apply.layer.borderWidth = 1.0
         let tap = UITapGestureRecognizer(target: self, action: #selector(FilterViewController.dismissKeyboard))
@@ -53,6 +59,24 @@ class FilterViewController: UIViewController {
         self.setUI(view_City)
         self.setUI(view_PropertyType)
         self.setUI(btn_Apply)
+    }
+    
+    //MARK:- get data
+    private func getCities() {
+        HouseStore.instance.getCities { (cities) -> Void in
+            self.cityArray = cities
+        }
+    }
+    
+    private func getPropertyTypes() {
+        HouseStore.instance.getHouses { (houses) -> Void in
+            self.propertyArray.removeAll()
+            for house in houses {
+                if let type = house.type, !self.propertyArray.contains(type) {
+                    self.propertyArray.append(type)
+                }
+            }
+        }
     }
     
     //MARK:- Dismiss keyboard
@@ -112,12 +136,12 @@ class FilterViewController: UIViewController {
             propertyPickerView.removeFromSuperview()
             cityPickerView.removeFromSuperview()
             setButtonUI(false, true, false)
-         case 101://Rent Button
+        case 101://Rent Button
             view.endEditing(true)
             toolBar.removeFromSuperview()
             propertyPickerView.removeFromSuperview()
             cityPickerView.removeFromSuperview()
-             setButtonUI(true, false, false)
+            setButtonUI(true, false, false)
         case 102://City Button
             view.endEditing(true)
             toolBar.removeFromSuperview()
@@ -138,7 +162,7 @@ class FilterViewController: UIViewController {
             view.endEditing(true)
             toolBar.removeFromSuperview()
             cityPickerView.removeFromSuperview()
-
+            
             propertyPickerView = UIPickerView.init()
             propertyPickerView.delegate = self
             propertyPickerView.dataSource = self
@@ -156,7 +180,7 @@ class FilterViewController: UIViewController {
             toolBar.removeFromSuperview()
             propertyPickerView.removeFromSuperview()
             cityPickerView.removeFromSuperview()
-
+            
             checkValidation()
         default:
             break
@@ -166,12 +190,12 @@ class FilterViewController: UIViewController {
     @objc func onDoneCityButtonTapped() {
         toolBar.removeFromSuperview()
         cityPickerView.removeFromSuperview()
-     }
+    }
     
     @objc func onDonePropertyButtonTapped() {
         toolBar.removeFromSuperview()
         propertyPickerView.removeFromSuperview()
-     }
+    }
     
     func checkValidation() {
         if selectedType == "0" {
@@ -200,16 +224,16 @@ class FilterViewController: UIViewController {
                 filter.onBuy = false
                 filter.onRent = true
             }
-            filter.city = lbl_City.text!
+            filter.cityId = selectedCityId
             filter.type = lbl_PropertyType.text!
             filter.minPrice = Double(txtField_Min.text!)
             filter.maxPrice = Double(txtField_Max.text!)
             
-            HouseStore.instance.getFilteredHouses(filter: filter) { (house) in
-                if house.count == 0 {
+            HouseStore.instance.getFilteredHouses(filter: filter) { (houses) in
+                if houses.count == 0 {
                     self.showAlert(NSLocalizedString("No result found", comment: "Error"))
                 } else {
-                    self.houseArray = house
+                    self.houseArray = houses
                     self.performSegue(withIdentifier: "unwindToback", sender: self)
                 }
             }
@@ -222,8 +246,6 @@ class FilterViewController: UIViewController {
             dest.houses = self.houseArray
         }
     }
-    
-
 }
 
 extension FilterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -243,7 +265,7 @@ extension FilterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == cityPickerView {
-            return cityArray[row]
+            return cityArray[row].name
         } else {
             return propertyArray[row]
         }
@@ -251,7 +273,8 @@ extension FilterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == cityPickerView {
-            self.lbl_City.text = cityArray[row]
+            self.lbl_City.text = cityArray[row].name
+            self.selectedCityId = Int(cityArray[row].id)
         } else {
             self.lbl_PropertyType.text = propertyArray[row]
         }

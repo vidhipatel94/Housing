@@ -13,6 +13,7 @@ class ListViewController: UIViewController {
     
     var filter = Filter()
     var houses = [House]()
+    var cities = [City]()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,7 +22,15 @@ class ListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if refreshRequired {
+            getCities()
             getFilteredHouses()
+        }
+    }
+    
+    private func getCities() {
+        HouseStore.instance.getCities { (cities) -> Void in
+            self.cities = cities
+            self.tableView.reloadData()
         }
     }
     
@@ -38,6 +47,16 @@ class ListViewController: UIViewController {
         
     }
     
+    func getCityName(id:Int)->String! {
+        if cities.count > 0 {
+            let filteredCities = cities.filter { ( $0.id == id ) }
+            if filteredCities.count > 0, let city = filteredCities.first {
+                return city.name
+            }
+        }
+        return nil
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "DetailSegue"?:
@@ -45,6 +64,7 @@ class ListViewController: UIViewController {
                 let house = houses[row]
                 let detailVC = segue.destination as! DetailViewController
                 detailVC.house = house
+                detailVC.cityName = getCityName(id: Int(house.cityId))
                 refreshRequired = false
             }
         case "FilterSegue"?:
@@ -60,7 +80,6 @@ class ListViewController: UIViewController {
     @IBAction func unwindToVC1(segue:UIStoryboardSegue) {
         self.tableView.reloadData()
     }
-    
 }
 
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -74,14 +93,12 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         let details = self.houses[indexPath.row]
         cell.lbl_Title.text = details.title
-        cell.lbl_City.text = details.city
-        cell.lbl_Price.text = "$ \(details.price ?? 0.0)"
+        cell.lbl_City.text = self.getCityName(id: Int(details.cityId))
+        cell.lbl_Price.text = "$ \(details.price)"
         cell.lbl_Type.text = details.type
         print(details.photos[0])
-        cell.imgView_Image?.loadUrl(url: details.photos[0], spinner: cell.loader)
+        cell.imgView_Image?.loadUrl(url: details.photos[0] as String, spinner: cell.loader)
         return cell
     }
-    
-    
 }
 

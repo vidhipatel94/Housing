@@ -8,7 +8,7 @@
 
 import Foundation
 
-class House : Codable{
+class House2 : Codable{
     
     var id: Int
     var title: String!
