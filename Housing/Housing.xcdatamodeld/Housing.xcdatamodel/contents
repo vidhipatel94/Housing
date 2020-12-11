@@ -24,7 +24,7 @@
         <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="houses" inverseEntity="City"/>
     </entity>
     <elements>
-        <element name="House" positionX="-63" positionY="-18" width="128" height="268"/>
         <element name="City" positionX="-54" positionY="99" width="128" height="103"/>
+        <element name="House" positionX="-63" positionY="-18" width="128" height="268"/>
     </elements>
 </model>

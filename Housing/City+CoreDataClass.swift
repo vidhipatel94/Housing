@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-@objc(City)
+
 public class City: NSManagedObject {
     public override func awakeFromInsert() {
         super.awakeFromInsert()
@@ -26,4 +26,5 @@ public class City: NSManagedObject {
         self.name = name
         self.photo = photo
     }
+
 }

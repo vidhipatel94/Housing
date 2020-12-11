@@ -23,3 +23,20 @@ extension City {
     @NSManaged public var houses: NSSet?
 
 }
+
+// MARK: Generated accessors for houses
+extension City {
+
+    @objc(addHousesObject:)
+    @NSManaged public func addToHouses(_ value: House)
+
+    @objc(removeHousesObject:)
+    @NSManaged public func removeFromHouses(_ value: House)
+
+    @objc(addHouses:)
+    @NSManaged public func addToHouses(_ values: NSSet)
+
+    @objc(removeHouses:)
+    @NSManaged public func removeFromHouses(_ values: NSSet)
+
+}
